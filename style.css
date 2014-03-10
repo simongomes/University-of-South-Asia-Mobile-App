@@ -1,0 +1,10 @@
+.header{
+	background: #CA232A !important;
+}
+.header h1{
+	color: #fff;
+	overflow: visible !important;
+	text-overflow: none !important;
+	margin: 0 5% !important;
+	padding: 5px 0 !important;
+}

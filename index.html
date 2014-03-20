@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-type" value="text/html; charset=UTF-8" />
+	<title>UniSA</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.1.min.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div data-role="page" id="homePage">
+	    <!-- header -->
+	    <div data-role="header" data-position="fixed"><a href="#mypanel" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-corner-all" style="background: #CA232A; border-color: darkred;"></a>
+	        <h1>UNIVERSITY OF SOUTH ASIA</h1>
+	    </div>
+	    <!-- content -->
+	    <div data-role="content">
+	        <h3 class="content-title">News &amp; Events</h3>
+	        <ul class="news-events-content">
+	        	<li>
+	        		<a href="#">
+		        		<h4 class="title">25% WAIVER on ADMISSION FEES</h4>
+		        		<img src="img/img1.jpg" alt="" />
+		        		<div class="content">
+		        			<p><span style="font-size:14px;"><span style="font-family: tahoma,geneva,sans-serif;">Dear prospective students! Great news for all!! Admission for Summer 2014 is open and everyone will get a 
+		        				<br/>
+		        			<span style="color:#cc0000;"><strong>25% WAIVER on ADMISSION FEES from NOW till March 15, 2014</strong>.</span>
+		        			</p>
+		        		</div>
+		        	</a>
+	        	</li>
+	        </ul>
+	        <h3 class="content-title">Photo Gallery</h3>
+	        <ul class="photo-gallery">
+	        	<li class="photo"><img src="img/photo1.jpg" alt=""></li>
+	        	<li class="photo"><img src="img/photo2.jpg" alt=""></li>
+	        	<li class="photo"><img src="img/photo3.jpg" alt=""></li>
+	        	<li class="photo"><img src="img/photo4.jpg" alt=""></li>
+	        </ul>
+	        <h3 class="content-title">Video Gallery</h3>
+	        <div class="videoWrapper">
+			    <h4 class="vdo-title">Prof. Dr. M. A. Muhit's Speech at Fresher's Fair of Fall</h4>
+			    <iframe width="100%" height="250" src="http://player.vimeo.com/video/80459906?title=0&amp;byline=0&amp;portrait=0" frameborder="0" allowfullscreen></iframe>
+			</div>
+			<div class="videoWrapper">
+			    <h4 class="vdo-title">Sraboner Megh by Rashik Ahmed - Students Performance</h4>
+			    <iframe width="100%" height="250" src="http:////player.vimeo.com/video/80781811?title=0&amp;byline=0&amp;portrait=0" frameborder="0" allowfullscreen></iframe>
+			</div>	        	 		
+	    </div>	    	    
+	</div>
+	<!-- /page -->
+	<div data-role="page" id="page_2">
+	    <!-- header -->
+	    <div data-role="header"><a href="#mypanel" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-corner-all" style="background: #CA232A; border-color: darkred;"></a>
+	        <h1>UNIVERSITY OF SOUTH ASIA</h1>
+	    </div>
+	    <!-- content -->
+	    <div data-role="content">
+	        <h1>Page 2</h1>	 		
+	    </div>	    	    
+	</div>
+	<!-- /page -->
+	<div data-role="page" id="page_3">
+	    <!-- header -->
+	    <div data-role="header"><a href="#mypanel" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-corner-all" style="background: #CA232A; border-color: darkred;"></a>
+	        <h1>UNIVERSITY OF SOUTH ASIA</h1>
+	    </div>
+	    <!-- content -->
+	    <div data-role="content">
+	        <h1>Page 3</h1>	 		
+	    </div>	    	    
+	</div>
+	<!-- /page -->
+	<div data-role="page" id="page_4">
+	    <!-- header -->
+	    <div data-role="header"><a href="#mypanel" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-corner-all" style="background: #CA232A; border-color: darkred;"></a>
+	        <h1>UNIVERSITY OF SOUTH ASIA</h1>
+	    </div>
+	    <!-- content -->
+	    <div data-role="content">
+	        <h1>Page 4</h1>	 		
+	    </div>	    	    
+	</div>
+	<!-- /page -->
+	
+	<!--<script type="text/javascript" src="phonegap.js"></script>-->
+	<script src="js/jquery-1.10.2.min.js"></script>
+	<script src="js/jquery.mobile-1.4.1.min.js"></script>
+	<script>
+		//$(document).ready(function(e) {
+			var panel = '<div data-role="panel" id="mypanel" data-display="overlay" style="background:#BC242A;">' + '<ul class="panel_nav"><li><a href="#homePage">Home</a></li><li><a href="#page_2">News and Events</a></li><li><a href="#page_3">Photo Gallery</a></li><li><a href="#page_4">Video Gallery</a></li><li><a href="#page_5">One Another Page</a></li></ul>' + '</div>';
+			$(document).one('pagebeforecreate', function () {
+			    $.mobile.pageContainer.prepend( panel );
+			    $("#mypanel").panel();
+			});			
+		//});
+		
+	</script>
+</body>
+</html>

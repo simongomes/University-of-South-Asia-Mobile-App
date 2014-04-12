@@ -23,7 +23,7 @@ $.ajax({
 .done(function() {
 	( function( $ ){
 		$( '.swipebox' ).swipebox({
-			hideBarsOnMobile : true
+			hideBarsOnMobile : false
 		});
 	})( jQuery );
 });

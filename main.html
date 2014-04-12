@@ -41,32 +41,37 @@
 		        </ul>		        
 	        </div>-->		
 	    
-		    <div class="image_gallery">
-		    	<a rel="gallery" href="img/photo1.jpg" class="swipebox">
-					<img src="img/photo1.jpg" alt="">
-				</a>
-				<a rel="gallery" href="img/photo2.jpg" class="swipebox">
-					<img src="img/photo2.jpg" alt="">
-				</a>
-				<a rel="gallery" href="img/photo3.jpg" class="swipebox">
-					<img src="img/photo3.jpg" alt="">
-				</a>
-				<a rel="gallery" href="img/photo4.jpg" class="swipebox">
-					<img src="img/photo4.jpg" alt="">
-				</a>
+		    <div class="image_gallery">		    	
 		    </div>
 	    </div>
-	</div>	
+	</div><!-- /#page -->
+	<div data-role="page" id="map_page">
+		 <!-- header -->
+	    <div data-role="header"><a href="#mypanel" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-corner-all" style="background: #CA232A; border-color: darkred;"></a>
+	        <h1>UNIVERSITY OF SOUTH ASIA</h1>
+	    </div>
+
+	 	<div id="map-canvas"></div>	
+	</div>
 	
 	<!--<script type="text/javascript" src="phonegap.js"></script>-->
 	<script src="js/jquery-1.10.2.min.js"></script>
 	<script src="js/jquery.mobile-1.4.1.min.js"></script>
 	<!--<script defer src="js/idangerous.swiper.js"></script>-->
 	<script src="js/jquery.swipebox.min.js"></script>
-	<script src="js/index.js"></script>
-	
-	<script>	
-	
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+	<script>
+		/*function initialize(){
+		var mapOpt = {
+		  center:new google.maps.LatLng(23.7947705,90.4029254),
+		  zoom:17,
+		  mapTypeId:google.maps.MapTypeId.ROADMAP
+		  };
+		var map=new google.maps.Map(document.getElementById("map-canvas"), mapOpt);
+	}
+
+	google.maps.event.addDomListener(window, 'load', initialize);*/
 	</script>
+	<script src="js/index.js"></script>
 </body>
 </html>

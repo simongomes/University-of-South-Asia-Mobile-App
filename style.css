@@ -60,9 +60,14 @@ body,
 #mypanel .panel_nav li:hover{
 	background: #F1701F;
 }
-.swiper-container img{
+#photo_page .image_gallery{
 	width: 100%;
 }
-.swiper-container .swiper-control{
-	margin: 0 0 0 40.5%;
+#photo_page .image_gallery a{
+	display: inline-block;
+	width: 32.2%;
+	margin-left: 2px;
+}
+#photo_page .image_gallery img{
+	width: 100%;
 }

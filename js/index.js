@@ -14,39 +14,16 @@ $.ajax({
 	success: function(data){
 		$.each( data, function(index, val) {
 			if( data[index].img_active == "yes" ){
-				$('#photo_page #photo_container').append("<li class='swiper-slide'><img src='http://www.southasia-uni.org/files/photos/" + data[index].img_filename + ".hdq." + data[index].img_extension + "' style='width: 100%;'></li>" );
+				$('#photo_page .image_gallery').append("<a rel='gallery' href='http://www.southasia-uni.org/files/photos/" + data[index].img_filename + ".hdq." + data[index].img_extension + "'class='swipebox'><img src='http://www.southasia-uni.org/files/photos/" + data[index].img_filename + ".hdq." + data[index].img_extension + "'></a>" );
 			}
-		});
-		/*var d = new Date( data[10].img_date * 1000 );
-			console.log( d.getDate() + '/' + d.getMonth()+1 + '/' + d.getFullYear());*/	
+		});		
 	}
 		
 })
 .done(function() {
-	var mySwiper = $('.swiper-container').swiper({
-		mode:'horizontal',
-    	loop: true
-	});		  
-  $('.prev').on( 'click', function(){
-		mySwiper.swipePrev();
-	})
-  $('.next').on( 'click', function(){
-		mySwiper.swipeNext();
-	})
+	( function( $ ){
+		$( '.swipebox' ).swipebox({
+			hideBarsOnMobile : true
+		});
+	})( jQuery );
 });
-
-
-/*$(function(){
-	var mySwiper = $('.swiper-container').swiper({
-    loop: true,
-    autoResize:true
-    //etc..
-  });		  
-  $('.prev').on( 'click', function(){
-		mySwiper.swipePrev();
-	})
-  $('.next').on( 'click', function(){
-		mySwiper.swipeNext();
-	})
-		
-});*/

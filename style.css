@@ -5,7 +5,6 @@
 [data-role="header"]{
 	background: #CA232A !important;
 	border: none;
-	height: 10%;
 }
 .header h1,
 [data-role="header"] h1{
@@ -53,11 +52,10 @@ body,
 	text-decoration: none;
 	text-transform: uppercase;
 	text-align: right;
-	padding: 20px 5px;
+	padding: 10px 5px;
 	font-family: 'Oswald', sans-serif;
 	font-weight: 400;
 	letter-spacing: 0.02em;
-	font-size: 1.5em;
 }
 #mypanel .panel_nav li:hover{
 	background: #F1701F;

@@ -55,3 +55,18 @@ $(document).on( 'pagecreate', function() {
 	}).trigger( 'resize' );
 	google.maps.event.addDomListener( window, 'load', mapinit );
 });
+
+function refreshPage() {
+  $.mobile.changePage(
+    window.location.href,
+    {
+      allowSamePageTransition : true,
+      transition              : 'none',
+      showLoadMsg             : false,
+      reloadPage              : true
+    }
+  );
+}
+$('[href="#map_page"]').click( function(){
+	refreshPage();
+}).delay( 1000 );

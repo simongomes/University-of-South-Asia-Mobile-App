@@ -37,19 +37,23 @@ $.ajax({
 var mapinit = function(){
 	var mapOptions = {
           center: new google.maps.LatLng( 23.7947705, 90.4029254 ),
-          zoom: 17,
+          zoom: 18,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };    
     var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions );
 }
 
 $(document).ready( function() {	
-		var winWidth = $( window ).width();
-		var winHeight = $( window ).height();
-		$('#map-canvas').css({
-			'width'	: winWidth,
-			'height': winHeight,
-	   		'overflow': 'hidden'
-		});	
+	// Setting the canvas size for google map
+	$('#map-canvas').height( $( '[data-role="page"]' ).height() );
+	$('#map-canvas').width( $( '[data-role="page"]' ).width() );
+
 	google.maps.event.addDomListener( window, 'load', mapinit );
+	//google.maps.event.trigger($('#map-canvas'), 'resize');
+	$('[href="#map_page"]').click( function(){
+		setTimeout( function(){
+			window.location.reload();
+			window.location.href = 'main.html#map_page';
+		}, 100 );
+	})
 });

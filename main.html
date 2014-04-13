@@ -13,8 +13,8 @@
 <body>
 	<div data-role="page" id="homePage">
 	    <!-- header -->
-	    <div data-role="header" data-position="fixed"><a href="#mypanel" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-corner-all" style="background: #CA232A; border-color: darkred;"></a>
-	        <h1>UNIVERSITY OF SOUTH ASIA</h1>
+	    <div data-role="header" data-position="fixed"><a href="#mypanel" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-corner-all" style="background: #CA232A; border-color: darkred; margin"></a>
+	        <h1 style="margin: 0 28%;">UNIVERSITY OF SOUTH ASIA</h1>
 	    </div>
 	    <!-- content -->
 	    <div data-role="content">	        	        	 		
@@ -23,31 +23,19 @@
 	<!-- /page -->
 	<div data-role="page" id="photo_page">
 	    <!-- header -->
-	    <div data-role="header"><a href="#mypanel" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-corner-all" style="background: #CA232A; border-color: darkred;"></a>
-	        <h1>UNIVERSITY OF SOUTH ASIA</h1>
+	    <div data-role="header"><a href="#mypanel" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-corner-all" style="background: #CA232A; border-color: darkred; margin-right: -22px;"></a>
+	        <h1 style="margin: 0 28%;">UNIVERSITY OF SOUTH ASIA</h1>
 	    </div>
 	    <!-- content -->
-	    <div data-role="content">
-	        <!--<div class="swiper-container" style="margin-top: 5px; float:left; width: 100%;">
-	        	<div class="swiper-control">
-	        		<a class="prev ui-btn ui-btn-icon-notext ui-icon-arrow-l ui-corner-all" data-theme="a" style="float:left; background: rgba(225,225,225,0.3); border-color: #555; margin-right: 5px;">prev</a>		       
-		        	<a class="next ui-btn ui-btn-icon-notext ui-icon-arrow-r ui-corner-all" data-theme="a" style="float:left; background: rgba(225,225,225,0.3); border-color: #555;">next</a>
-		    	</div>
-		        <ul class="swiper-wrapper" style="clear:both; width: 100%;" id="photo_container">
-		        	<li class="swiper-slide"><img src="img/photo1.jpg" alt=""></li>
-		        	<li class="swiper-slide"><img src="img/photo2.jpg" alt=""></li>
-		        	<li class="swiper-slide"><img src="img/photo3.jpg" alt=""></li>
-		        	<li class="swiper-slide"><img src="img/photo4.jpg" alt=""></li>	        	
-		        </ul>		        
-	        </div>-->		
-	    
-		    <div class="image_gallery">		    	
+	    <div data-role="content"> 
+		    <div class="image_gallery">	
+		    	<!-- This section will be populated by images from the image json feed usin ajax on the fly -->	    	
 		    </div>
 	    </div>
 	</div><!-- /#page -->
 	<div data-role="page" id="map_page">
 		 <!-- header -->
-	    <div data-role="header"><a href="#mypanel" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-corner-all" style="background: #CA232A; border-color: darkred;"></a>
+	    <div data-role="header"><a href="#mypanel" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-corner-all" style="background: #CA232A; border-color: darkred; margin-right: -22px;"></a>
 	        <h1>UNIVERSITY OF SOUTH ASIA</h1>
 	    </div>
 
@@ -60,18 +48,6 @@
 	<!--<script defer src="js/idangerous.swiper.js"></script>-->
 	<script src="js/jquery.swipebox.min.js"></script>
 	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-	<script>
-		/*function initialize(){
-		var mapOpt = {
-		  center:new google.maps.LatLng(23.7947705,90.4029254),
-		  zoom:17,
-		  mapTypeId:google.maps.MapTypeId.ROADMAP
-		  };
-		var map=new google.maps.Map(document.getElementById("map-canvas"), mapOpt);
-	}
-
-	google.maps.event.addDomListener(window, 'load', initialize);*/
-	</script>
 	<script src="js/index.js"></script>
 </body>
 </html>

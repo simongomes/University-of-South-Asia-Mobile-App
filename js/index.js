@@ -43,30 +43,13 @@ var mapinit = function(){
     var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions );
 }
 
-$(document).on( 'pagecreate', function() {
-	$( window ).bind( 'resize', function(){
-		var winWidth = $( '[data-role="page"]' ).width();
-		var winHeight = $( '[data-role="page"]' ).height();
+$(document).ready( function() {	
+		var winWidth = $( window ).width();
+		var winHeight = $( window ).height();
 		$('#map-canvas').css({
 			'width'	: winWidth,
 			'height': winHeight,
 	   		'overflow': 'hidden'
-		});
-	}).trigger( 'resize' );
+		});	
 	google.maps.event.addDomListener( window, 'load', mapinit );
 });
-
-function refreshPage() {
-  $.mobile.changePage(
-    window.location.href,
-    {
-      allowSamePageTransition : true,
-      transition              : 'none',
-      showLoadMsg             : false,
-      reloadPage              : true
-    }
-  );
-}
-$('[href="#map_page"]').click( function(){
-	refreshPage();
-}).delay( 1000 );

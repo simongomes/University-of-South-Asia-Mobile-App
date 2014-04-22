@@ -42,7 +42,7 @@ $.getJSON( dataURL, function( newsObj ) {
 	});
 })
 .done(function(){
-	$("#news_events_page #news_titles li a").on( 'click', function(){
+	$("#news_events_page #news_titles li a").on( 'touchstart click', function(){
 		$('.spinner').show();
 		$("#full_news_page .news_content .content").hide();
 		var newsID = $(this).attr( "id" );
@@ -83,7 +83,7 @@ $(document).ready( function() {
 
 	google.maps.event.addDomListener( window, 'load', mapinit );
 	//google.maps.event.trigger($('#map-canvas'), 'resize');
-	$('[href="#map_page"]').click( function(){
+	$('[href="#map_page"]').on( 'touchstart click', function(){
 		setTimeout( function(){
 			window.location.reload();
 			window.location.href = 'main.html#map_page';

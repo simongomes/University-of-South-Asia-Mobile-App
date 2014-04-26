@@ -28,9 +28,8 @@ a:hover{
 	text-decoration: none;
 	color: #333;
 }
-body,
-.ui-content{
-	background: #fefefe;
+body, .ui-content, .ui-page{
+	background: #E9EAED;
 }
 #mypanel .panel_nav{
 	padding: 0;
@@ -64,14 +63,18 @@ body,
 	width: 100%;
 }
 #photo_page .image_gallery a{
-	display: inline-block;
-	width: 32.50%;
-	height: 100px;
-	margin-left: 2px;
+	display: block;
+	background: #FFFFFF;
+	padding: 10px;
+	border-width: 1px;
+	border-color: #E5E6E9 #DFE0E4 #D0D1D5;
+	border-radius: 3px;
+	border-style: solid;
+	margin-bottom: 5px;
 }
 #photo_page .image_gallery img{
 	width: 100%;
-	height: 100%;
+	display: block;
 }
 /*-- Google Map Style --*/
 #map_page #map-canvas{
@@ -99,13 +102,58 @@ body,
 #mypanel .social-links a.vm{ background-position: 0 -68px; } 
 #mypanel .social-links a.yt{ background-position: 0 -102px; }
 
+/* News and Events Page style */
+#news_events_page #news li{
+	display: block;
+	background: #FFFFFF;
+	padding: 10px;
+	border-width: 1px;
+	border-color: #E5E6E9 #DFE0E4 #D0D1D5;
+	border-radius: 3px;
+	border-style: solid;
+	margin-bottom: 10px;
+}
+#news_events_page #news li a{
+	color: #7D7D7D;
+	font-weight: 400;
+}
+#news_events_page #news li .title{
+	font-family: 'Oswald',sans-serif;
+	text-transform: uppercase;
+	border-bottom: 1px solid #E1E1E1;
+	padding-bottom: 5px;
+	margin-top: 0;
+}
+#news_events_page #news li .news-img{
+	width: 100%;
+	display: block;
+}
+#news_events_page #news li .news-desc{
+	font-family: 'Oswald',sans-serif;
+	font-weight: 100;
+}
+#news_events_page #news li .read-more{
+	font-style: italic;
+}
+#news_events_page .load-more-news{
+	font-size: 15px;
+	font-weight: 400;
+	font-style: italic;
+	color: #8b8b8b;
+	visibility: hidden;
+}
 #swipebox-prev, #swipebox-next{ display: none; }
-
 .spinner{
 	width: 100px;
 }
+
 #full_news_page .news_content .content{
-	width: 100%;
+	background: #FFFFFF;
+	padding: 15px;
+	border-width: 1px;
+	border-color: #E5E6E9 #DFE0E4 #D0D1D5;
+	border-radius: 3px;
+	border-style: solid;
 }
 #full_news_page .news_content .news_title{
 	font-family: 'Oswald',sans-serif;
@@ -115,6 +163,7 @@ body,
 	border-bottom: 1px solid #E1E1E1;
 	padding-bottom: 5px;
 	font-weight: 400;
+	margin-top: 0px;
 }
 #full_news_page .news_content .news_img{
 	margin-left: auto;
@@ -129,4 +178,12 @@ body,
 #contact_page [data-role="content"] p{
 	font-family: 'Oswald',sans-serif;
 	color: #585858;
+}
+#contact_page .content{
+	background: #FFFFFF;
+	padding: 15px;
+	border-width: 1px;
+	border-color: #E5E6E9 #DFE0E4 #D0D1D5;
+	border-radius: 3px;
+	border-style: solid;
 }

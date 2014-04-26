@@ -1,5 +1,5 @@
 // Pannel script 
-var panel = '<div data-role="panel" id="mypanel" data-display="overlay" style="background:#BC242A;">' + '<ul class="panel_nav"><li><a href="#homePage">Home</a></li><li><a href="#news_events_page">News, Events &amp; Notice</a></li><li><a href="#photo_page">Photo Gallery</a></li><li><a href="http://103.17.37.71/elearning/">eLearning</a></li><li><a href="http://103.17.37.71/index.php">South Asia Connect</a></li><li><a href="#map_page">Map</a></li><li><a href="#contact_page" data-rel="dialog" data-transition="pop">Contact Us</a></li></ul><div class="social-links"><a class="fb" href="https://www.facebook.com/pages/University-of-South-Asia/384978734950628">Facebook</a><a class="yt" href="https://www.youtube.com/channel/UCxezjINjUWgwQ62NZbomRpw">Youtube</a><a class="vm" href="https://vimeo.com/user19719682">Vimeo</a></div></div>';
+var panel = '<div data-role="panel" id="mypanel" data-display="reveal" style="background:#BC242A;">' + '<ul class="panel_nav"><li><a href="#homePage">Home</a></li><li><a href="#admissionPage">Admissions</a></li><li><a href="#news_events_page">News, Events &amp; Notice</a></li><li><a href="#photo_page">Photo Gallery</a></li><li><a href="http://103.17.37.71/elearning/">eLearning</a></li><li><a href="http://103.17.37.71/index.php">South Asia Connect</a></li><li><a href="#map_page">Map</a></li><li><a href="#contact_page">Contact Us</a></li></ul><div class="social-links"><a class="fb" href="https://www.facebook.com/pages/University-of-South-Asia/384978734950628">Facebook</a><a class="yt" href="https://www.youtube.com/channel/UCxezjINjUWgwQ62NZbomRpw">Youtube</a><a class="vm" href="https://vimeo.com/user19719682">Vimeo</a></div></div>';
 $(document).one('pagebeforecreate', function () {
     $.mobile.pageContainer.prepend( panel );
     $("#mypanel").panel();
@@ -13,8 +13,8 @@ $.getJSON( dataURL,  function( photoObj ) {
 	$.each( photoObj, function(index, val) {
 		if( photoObj[index].img_active == "yes" ){
 			counter++;
-			$('#photo_page .image_gallery').append("<a rel='gallery' href='http://www.southasia-uni.org/files/photos/" + photoObj[index].img_filename + ".hdq." + photoObj[index].img_extension + "'class='swipebox'><img src='http://www.southasia-uni.org/files/photos/" + photoObj[index].img_filename + ".sml." + photoObj[index].img_extension + "'></a>" );	
-			if( counter == 18) return false;
+			$('#photo_page .image_gallery').append("<a rel='gallery' href='http://www.southasia-uni.org/files/photos/" + photoObj[index].img_filename + ".hdq." + photoObj[index].img_extension + "'class='swipebox'><img src='http://www.southasia-uni.org/files/photos/" + photoObj[index].img_filename + ".mid." + photoObj[index].img_extension + "'></a>" );	
+			if( counter == 9) return false;
 		}			
 	});
 }) // Photo Gallery swiper script
@@ -30,27 +30,40 @@ $.getJSON( dataURL,  function( photoObj ) {
 dataURL = "http://www.southasia-uni.org/includes/mobileappcontent/news_events.php";
 $.getJSON( dataURL, function( newsObj ) {
 	counter = 0;
+	var news_desc = '';
+	//var img_src = null;
 	$.each( newsObj, function(index, val) {
-		$("#news_events_page #news_titles").append(
-			"<li><a href='#full_news_page' id='" + 
+		/*$.get( 'http://www.southasia-uni.org/files/photos/' + newsObj[index].news_img + '.mid.jpg' )
+		    .done(function() { 
+		        img_src = 'http://www.southasia-uni.org/files/photos/' + newsObj[index].news_img + '.mid.jpg';
+		    }).fail(function() { 
+		       img_src = 'http://www.southasia-uni.org/files/photos/' + newsObj[index].news_img + '.sml.jpg';
+		   	})*/
+		if( !newsObj[index].news_desc ) news_desc = '';
+		else news_desc = newsObj[index].news_desc ;
+
+		$("#news_events_page #news").append(
+			"<li><h3 class='title'><a href='#full_news_page' id='" + 
 			newsObj[index].news_id + 
-			"' class='ui-btn ui-btn-icon-right ui-icon-carat-r'>" + newsObj[index].news_title + 
-			"</a></li>"
+			"'>" + newsObj[index].news_title + 
+			"</a></h3><img class='news-img' src='http://www.southasia-uni.org/files/photos/" + $.trim( newsObj[index].news_img ) + ".mid.jpg'/>" + 
+			"<p class='news-desc'>" + news_desc + "</p><a href='#full_news_page' id='" + 
+			newsObj[index].news_id + "' class='read-more ui-btn ui-btn-b'>Read More</a></li>"
 		)
 		counter++;
-		if( counter == 15 ) return false;
+		if( counter == 5 ) return false;
 	});
 })
 .done(function(){
-	$("#news_events_page #news_titles li a").on( 'touchstart click', function(){
-		$('.spinner').show();
-		$("#full_news_page .news_content .content").hide();
+	$("#news_events_page .load-more-news").css( 'visibility', 'visible' );
+
+	$("#news_events_page #news li a").on( 'touchstart click', function(){		
 		var newsID = $(this).attr( "id" );
 		$.getJSON( dataURL, function( newsObj ) {
 			$.each( newsObj, function(index, val) {
 				if( newsObj[index].news_id == newsID ){
 					$("#full_news_page .news_content .news_title").text( newsObj[index].news_title );
-					$("#full_news_page .news_content .news_img").attr("src","http://www.southasia-uni.org/files/photos/" + newsObj[index].news_img + ".mid.jpg");
+					$("#full_news_page .news_content .news_img").attr("src","http://www.southasia-uni.org/files/photos/" + $.trim( newsObj[index].news_img ) + ".mid.jpg");
 					$("#full_news_page .news_content .news_desc").html( newsObj[index].news_content );
 					var htmlStr = $("#full_news_page .news_content .news_desc").text();
 					$("#full_news_page .news_content .news_desc").html( htmlStr );
@@ -58,12 +71,73 @@ $.getJSON( dataURL, function( newsObj ) {
 				}
 			})
 		})
-		.done( function(){
-			$('.spinner').hide();
-			$("#full_news_page .news_content .content").slideDown( 'slow' );
+		.done( function(){			
+			$("#full_news_page .news_content .content").slideDown( 'fast' );
 		})	
 	})
 })
+
+$('#load-news').on('touchstart click', function(e) {
+	e.preventDefault();
+	var flag  = false;
+	var counter = 0;
+	var lastID = $('#news_events_page #news li:last-child .title a').attr('id');
+	$.getJSON( dataURL, function( newsObj ) {
+		$.each( newsObj, function(index, val) {
+			if(  newsObj[index].news_id == lastID ){
+				flag = true;
+				return;
+			}
+			if( flag == true ){
+				$("#news_events_page #news").append(
+					"<li><h3 class='title'><a href='#full_news_page' id='" + 
+					newsObj[index].news_id + 
+					"'>" + newsObj[index].news_title + 
+					"</a></h3><img class='news-img' src='http://www.southasia-uni.org/files/photos/" + $.trim( newsObj[index].news_img ) + ".mid.jpg'/>" + 
+					"<p class='news-desc'>" + newsObj[index].news_desc + "</p><a href='#full_news_page' id='" + 
+					newsObj[index].news_id + "' class='read-more ui-btn ui-btn-b'>Read More</a></li>"
+				)
+				counter++;
+				if( counter == 5 ) return false;
+			}
+		});
+	})
+	.done( function(){
+		$("#news_events_page #news li a").on( 'touchstart click', function(){		
+		var newsID = $(this).attr( "id" );
+		$.getJSON( dataURL, function( newsObj ) {
+			$.each( newsObj, function(index, val) {
+				if( newsObj[index].news_id == newsID ){
+					$("#full_news_page .news_content .news_title").text( newsObj[index].news_title );
+					$("#full_news_page .news_content .news_img").attr("src","http://www.southasia-uni.org/files/photos/" + $.trim( newsObj[index].news_img ) + ".mid.jpg");
+					$("#full_news_page .news_content .news_desc").html( newsObj[index].news_content );
+					var htmlStr = $("#full_news_page .news_content .news_desc").text();
+					$("#full_news_page .news_content .news_desc").html( htmlStr );
+					return false;
+				}
+			})
+		})
+		.done( function(){			
+			$("#full_news_page .news_content .content").slideDown( 'fast' );
+		})	
+	})
+	})
+});
+// This function checks if the passed url exist or not. We used to it to check the images exist
+/*var urlExists = function(url, callback) {
+
+    if ( ! $.isFunction(callback)) {
+       throw Error('Not a valid callback');
+    }   
+
+    $.ajax({
+        type: 'HEAD',
+        url: url,
+        success: $.proxy(callback, this, true),
+        error: $.proxy(callback, this, false)      
+    });
+
+};*/
 
 // Google Map script [Using Google Map API]
 // Initializing the google map function and it's options

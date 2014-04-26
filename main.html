@@ -13,7 +13,7 @@
 <body>
 	<div data-role="page" id="homePage">
 	    <!-- header -->
-	    <div data-role="header" data-position="fixed"><a href="#mypanel" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-corner-all" style="background: #CA232A; border-color: darkred; margin"></a>
+	    <div data-role="header" data-position="fixed" data-tap-toggle="false"><a href="#mypanel" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-corner-all" style="background: #CA232A; border-color: darkred; margin"></a>
 	        <h1 style="margin: 0;">UNIVERSITY OF SOUTH ASIA</h1>
 	    </div>
 	    <!-- content -->
@@ -23,18 +23,19 @@
 	<!-- /page -->
 	<div data-role="page" id="news_events_page">
 		<!-- header -->
-	    <div data-role="header" data-position="fixed"><a href="#mypanel" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-corner-all" style="background: #CA232A; border-color: darkred; margin-right: -22px;"></a>
+	    <div data-role="header" data-position="fixed" data-tap-toggle="false"><a href="#mypanel" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-corner-all" style="background: #CA232A; border-color: darkred; margin-right: -22px;"></a>
 	        <h1 style="margin: 0;">UNIVERSITY OF SOUTH ASIA</h1>
 	    </div>
 	    <div data-role="content"> 
-		    <ul data-role="listview" id="news_titles">
+		    <ul id="news">
 			    <!-- this section will be populated with news title from database using ajax call -->	
 			</ul>
+			<a href="#" id="load-news" class="load-more-news" data-role="button" data-iconpos="right" data-theme="b">Load More</a>
 	    </div>
 	</div><!-- /page -->
 	<div data-role="page" id="full_news_page">
 		<!-- header -->
-	    <div data-role="header" data-position="fixed"><a href="#" class="ui-btn ui-btn-icon-notext ui-icon-back ui-corner-all" style="background: #CA232A; border-color: darkred; margin-right: -22px;" data-rel="back"></a>
+	    <div data-role="header" data-position="fixed" data-tap-toggle="false"><a href="#" class="ui-btn ui-btn-icon-notext ui-icon-back ui-corner-all" style="background: #CA232A; border-color: darkred; margin-right: -22px;" data-rel="back"></a>
 	        <h1 style="margin: 0;">UNIVERSITY OF SOUTH ASIA</h1>
 	    </div>
 	    <div data-role="content" class="news_content">
@@ -52,7 +53,7 @@
 	</div><!-- /page -->
 	<div data-role="page" id="photo_page">
 	    <!-- header -->
-	    <div data-role="header" data-position="fixed"><a href="#mypanel" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-corner-all" style="background: #CA232A; border-color: darkred; margin-right: -22px;"></a>
+	    <div data-role="header" data-position="fixed" data-tap-toggle="false"><a href="#mypanel" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-corner-all" style="background: #CA232A; border-color: darkred; margin-right: -22px;"></a>
 	        <h1 style="margin: 0;">UNIVERSITY OF SOUTH ASIA</h1>
 	    </div>
 	    <!-- content -->
@@ -60,25 +61,28 @@
 		    <div class="image_gallery">	
 		    	<!-- This section will be populated by images from the image json feed usin ajax on the fly -->	    	
 		    </div>
+		    <a href="#" class="load-more-img ui-btn ui-btn-b">Load More Image</a>
 	    </div>
 	</div><!-- /#page -->
 	<div data-role="page" id="map_page">
 		 <!-- header -->
-	    <div data-role="header" data-position="fixed"><a href="#mypanel" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-corner-all" style="background: #CA232A; border-color: darkred; margin-right: -22px;"></a>
+	    <div data-role="header" data-position="fixed" data-tap-toggle="false"><a href="#mypanel" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-corner-all" style="background: #CA232A; border-color: darkred; margin-right: -22px;"></a>
 	        <h1 style="margin: 0;">UNIVERSITY OF SOUTH ASIA</h1>
 	    </div>
 	 	<div id="map-canvas"></div>	
 	</div>
 	<div data-role="page" id="contact_page">
 		 <!-- header -->
-	    <div data-role="header" data-position="fixed"><a href="#" class="ui-btn ui-btn-icon-notext ui-icon-delete ui-corner-all" style="background: #CA232A; border-color: darkred; margin-right: -22px;" data-rel="back"></a>
+	    <div data-role="header" data-position="fixed" data-tap-toggle="false"><a href="#mypanel" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-corner-all" style="background: #CA232A; border-color: darkred; margin-right: -22px;"></a>
 	        <h1 style="margin: 0;">UNIVERSITY OF SOUTH ASIA</h1>
 	    </div>
 	 	<div data-role="content">
-			<p>House 76 &amp; 78, Road 14, Block B, Banani, Dhaka, Bangladesh</p>
-		    <p><strong>Telephone:</strong> 002 9897073-4</p>
-		    <p><strong>Mobile:</strong> 0176 3030636, 01686265125, 0196 6459878</p>
-		    <p><strong>E-mail:</strong> <a href="mailto:someone@example.com?Subject=Hello%20again">mail@southasia-uni.org</a></p>
+	 		<div class="content">
+				<p>House 76 &amp; 78, Road 14, Block B, Banani, Dhaka, Bangladesh</p>
+		    	<p><strong>Telephone:</strong> 002 9897073-4</p>
+		    	<p><strong>Mobile:</strong> 0176 3030636, 01686265125, 0196 6459878</p>
+		    	<p><strong>E-mail:</strong> <a href="mailto:someone@example.com?Subject=Hello%20again">mail@southasia-uni.org</a></p>
+		    </div>
 	 	</div>	
 	</div>
 	

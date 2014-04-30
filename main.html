@@ -38,10 +38,7 @@
 	    <div data-role="header" data-position="fixed" data-tap-toggle="false"><a href="#" class="ui-btn ui-btn-icon-notext ui-icon-back ui-corner-all" style="background: #CA232A; border-color: darkred; margin-right: -22px;" data-rel="back"></a>
 	        <h1 style="margin: 0;">UNIVERSITY OF SOUTH ASIA</h1>
 	    </div>
-	    <div data-role="content" class="news_content">
-	    	<div style="text-align: center;"> 
-	    		<img src="./img/loading.gif" alt="" class="spinner" style="display:none" />
-	    	</div>
+	    <div data-role="content" class="news_content">	    	
 			<div class="content" style="display: none;">
 				<h4 class="news_title"></h4>
 				<div style="text-align: center;">
@@ -61,7 +58,7 @@
 		    <div class="image_gallery">	
 		    	<!-- This section will be populated by images from the image json feed usin ajax on the fly -->	    	
 		    </div>
-		    <a href="#" class="load-more-img ui-btn ui-btn-b">Load More Image</a>
+		    <a href="#" id="load-img" class="load-more-img" data-role="button" data-iconpos="right" data-theme="b">Load More</a>
 	    </div>
 	</div><!-- /#page -->
 	<div data-role="page" id="map_page">

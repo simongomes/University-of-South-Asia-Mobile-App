@@ -4,6 +4,15 @@ $(document).one('pagebeforecreate', function () {
     $.mobile.pageContainer.prepend( panel );
     $("#mypanel").panel();
 });
+$( document ).on( "pageinit", function() {
+    $( document ).on( "swipeleft swiperight", function( e ) {       
+	    if ( $.mobile.activePage.jqmData( "panel" ) !== "open" ) {
+	        if ( e.type === "swiperight" ) {
+	            $( "#mypanel" ).panel( "open" );
+	        }
+	    }
+    });
+});
 
 // Photo Gallery swiper script
 // Fetching data from the server using ajax call
@@ -13,12 +22,13 @@ $.getJSON( dataURL,  function( photoObj ) {
 	$.each( photoObj, function(index, val) {
 		if( photoObj[index].img_active == "yes" ){
 			counter++;
-			$('#photo_page .image_gallery').append("<a rel='gallery' href='http://www.southasia-uni.org/files/photos/" + photoObj[index].img_filename + ".hdq." + photoObj[index].img_extension + "'class='swipebox'><img src='http://www.southasia-uni.org/files/photos/" + photoObj[index].img_filename + ".mid." + photoObj[index].img_extension + "'></a>" );	
-			if( counter == 9) return false;
+			$('#photo_page .image_gallery').append("<a id='" + photoObj[index].img_id + "'' rel='gallery' href='http://www.southasia-uni.org/files/photos/" + photoObj[index].img_filename + ".hdq." + photoObj[index].img_extension + "'class='swipebox'><img src='http://www.southasia-uni.org/files/photos/" + photoObj[index].img_filename + ".mid." + photoObj[index].img_extension + "'></a>" );	
+			if( counter == 5 ) return false;
 		}			
 	});
 }) // Photo Gallery swiper script
 .done(function() {
+	$("#photo_page .load-more-img").css( 'visibility', 'visible' );
 	( function( $ ){
 		$( '.swipebox' ).swipebox({
 			hideBarsOnMobile : false
@@ -57,10 +67,12 @@ $.getJSON( dataURL, function( newsObj ) {
 .done(function(){
 	$("#news_events_page .load-more-news").css( 'visibility', 'visible' );
 
-	$("#news_events_page #news li a").on( 'touchstart click', function(){		
+	$("#news_events_page #news li a").on( 'touchstart click', function(){
+		$("#full_news_page .news_content .content").hide();
+		$("#full_news_page .news_content").append('<div class="loading"><div class="facebookG"><div id="blockG_1" class="facebook_blockG"></div><div id="blockG_2" class="facebook_blockG"></div><div id="blockG_3" class="facebook_blockG"></div></div>');	
 		var newsID = $(this).attr( "id" );
 		$.getJSON( dataURL, function( newsObj ) {
-			$.each( newsObj, function(index, val) {
+			$.each( newsObj, function( index, val ) {
 				if( newsObj[index].news_id == newsID ){
 					$("#full_news_page .news_content .news_title").text( newsObj[index].news_title );
 					$("#full_news_page .news_content .news_img").attr("src","http://www.southasia-uni.org/files/photos/" + $.trim( newsObj[index].news_img ) + ".mid.jpg");
@@ -71,8 +83,10 @@ $.getJSON( dataURL, function( newsObj ) {
 				}
 			})
 		})
-		.done( function(){			
-			$("#full_news_page .news_content .content").slideDown( 'fast' );
+		.done( function(){				
+			$("#full_news_page .news_content .content").fadeIn( 'fast' );
+			$('.loading').fadeOut('fast');
+			$('.loading').remove();
 		})	
 	})
 })
@@ -82,6 +96,7 @@ $('#load-news').on('touchstart click', function(e) {
 	var flag  = false;
 	var counter = 0;
 	var lastID = $('#news_events_page #news li:last-child .title a').attr('id');
+	$('#news_events_page #news').append( '<div class="loading"><div class="facebookG"><div id="blockG_1" class="facebook_blockG"></div><div id="blockG_2" class="facebook_blockG"></div><div id="blockG_3" class="facebook_blockG"></div></div>' );
 	$.getJSON( dataURL, function( newsObj ) {
 		$.each( newsObj, function(index, val) {
 			if(  newsObj[index].news_id == lastID ){
@@ -103,26 +118,63 @@ $('#load-news').on('touchstart click', function(e) {
 		});
 	})
 	.done( function(){
-		$("#news_events_page #news li a").on( 'touchstart click', function(){		
-		var newsID = $(this).attr( "id" );
-		$.getJSON( dataURL, function( newsObj ) {
-			$.each( newsObj, function(index, val) {
-				if( newsObj[index].news_id == newsID ){
-					$("#full_news_page .news_content .news_title").text( newsObj[index].news_title );
-					$("#full_news_page .news_content .news_img").attr("src","http://www.southasia-uni.org/files/photos/" + $.trim( newsObj[index].news_img ) + ".mid.jpg");
-					$("#full_news_page .news_content .news_desc").html( newsObj[index].news_content );
-					var htmlStr = $("#full_news_page .news_content .news_desc").text();
-					$("#full_news_page .news_content .news_desc").html( htmlStr );
-					return false;
-				}
+		$('.loading').fadeOut('fast');
+		$('.loading').remove();
+		$("#news_events_page #news li a").on( 'touchstart click', function(){
+			$("#full_news_page .news_content .content").hide();
+			$("#full_news_page .news_content").append('<div class="loading"><div class="facebookG"><div id="blockG_1" class="facebook_blockG"></div><div id="blockG_2" class="facebook_blockG"></div><div id="blockG_3" class="facebook_blockG"></div></div>');			
+			var newsID = $(this).attr( "id" );
+			$.getJSON( dataURL, function( newsObj ) {
+				$.each( newsObj, function(index, val) {
+					if( newsObj[index].news_id == newsID ){
+						$("#full_news_page .news_content .news_title").text( newsObj[index].news_title );
+						$("#full_news_page .news_content .news_img").attr("src","http://www.southasia-uni.org/files/photos/" + $.trim( newsObj[index].news_img ) + ".mid.jpg");
+						$("#full_news_page .news_content .news_desc").html( newsObj[index].news_content );
+						var htmlStr = $("#full_news_page .news_content .news_desc").text();
+						$("#full_news_page .news_content .news_desc").html( htmlStr );
+						return false;
+					}
+				})
 			})
+			.done( function(){						
+				$("#full_news_page .news_content .content").fadeIn( 'fast' );
+				$('.loading').fadeOut('fast');
+				$('.loading').remove();
+			})	
 		})
-		.done( function(){			
-			$("#full_news_page .news_content .content").slideDown( 'fast' );
-		})	
-	})
 	})
 });
+
+$('#load-img').on('touchstart click', function(e) {
+	e.preventDefault();	
+	var flag  = false;
+	var counter = 0;
+	var lastID = $('#photo_page .image_gallery a:last-child').attr('id');
+	$('#photo_page .image_gallery').append( '<div class="loading"><div class="facebookG"><div id="blockG_1" class="facebook_blockG"></div><div id="blockG_2" class="facebook_blockG"></div><div id="blockG_3" class="facebook_blockG"></div></div>' );
+	var dataURL = "http://www.southasia-uni.org/includes/mobileappcontent/photo_page.php";
+	$.getJSON( dataURL,  function( photoObj ) {		
+		$.each( photoObj, function(index, val) {
+			if( photoObj[index].img_id == lastID ){
+				flag = true;
+				return;
+			}
+			if( flag == true ){
+				if( photoObj[index].img_active == "yes" ){					
+					$('#photo_page .image_gallery').append("<a id='" + photoObj[index].img_id + "'' rel='gallery' href='http://www.southasia-uni.org/files/photos/" + photoObj[index].img_filename + ".hdq." + photoObj[index].img_extension + "'class='swipebox'><img src='http://www.southasia-uni.org/files/photos/" + photoObj[index].img_filename + ".mid." + photoObj[index].img_extension + "'></a>" );					
+					counter++;
+					if( counter == 5 ) return false;
+				}				
+			}		
+		});
+	}) // Photo Gallery swiper script
+	.done( function() {
+		$('.loading').fadeOut('fast');
+		$('.loading').remove();
+		$( '.swipebox' ).swipebox({
+				hideBarsOnMobile : false
+		});
+	});
+})
 // This function checks if the passed url exist or not. We used to it to check the images exist
 /*var urlExists = function(url, callback) {
 

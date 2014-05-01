@@ -1,17 +1,21 @@
 // Pannel script 
-var panel = '<div data-role="panel" id="mypanel" data-display="reveal" style="background:#BC242A;">' + '<ul class="panel_nav"><li><a href="#homePage">Home</a></li><li><a href="#admissionPage">Admissions</a></li><li><a href="#news_events_page">News, Events &amp; Notice</a></li><li><a href="#photo_page">Photo Gallery</a></li><li><a href="http://103.17.37.71/elearning/">eLearning</a></li><li><a href="http://103.17.37.71/index.php">South Asia Connect</a></li><li><a href="#map_page">Map</a></li><li><a href="#contact_page">Contact Us</a></li></ul><div class="social-links"><a class="fb" href="https://www.facebook.com/pages/University-of-South-Asia/384978734950628">Facebook</a><a class="yt" href="https://www.youtube.com/channel/UCxezjINjUWgwQ62NZbomRpw">Youtube</a><a class="vm" href="https://vimeo.com/user19719682">Vimeo</a></div></div>';
+var panel = '<div data-role="panel" id="mypanel" data-display="reveal" data-tap-toggle="false" style="background:#BC242A;">' + '<ul class="panel_nav"><li><a href="#homePage">Home</a></li><li><a href="#admissionPage">Admissions</a></li><li><a href="#news_events_page">News, Events &amp; Notice</a></li><li><a href="#photo_page">Photo Gallery</a></li><li><a href="http://103.17.37.71/elearning/">eLearning</a></li><li><a href="http://103.17.37.71/index.php">South Asia Connect</a></li><li><a href="#map_page">Map</a></li><li><a href="#contact_page">Contact Us</a></li></ul><div class="social-links"><a class="fb" href="https://www.facebook.com/pages/University-of-South-Asia/384978734950628">Facebook</a><a class="yt" href="https://www.youtube.com/channel/UCxezjINjUWgwQ62NZbomRpw">Youtube</a><a class="vm" href="https://vimeo.com/user19719682">Vimeo</a></div></div>';
 $(document).one('pagebeforecreate', function () {
     $.mobile.pageContainer.prepend( panel );
     $("#mypanel").panel();
 });
 $( document ).on( "pageinit", function() {
-    $( document ).on( "swipeleft swiperight", function( e ) {       
+    $( document ).on( "swiperight", function( e ) {       
 	    if ( $.mobile.activePage.jqmData( "panel" ) !== "open" ) {
 	        if ( e.type === "swiperight" ) {
 	            $( "#mypanel" ).panel( "open" );
 	        }
 	    }
     });
+});
+
+$(function() {
+    FastClick.attach(document.body);
 });
 
 // Photo Gallery swiper script

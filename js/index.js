@@ -15,7 +15,7 @@ $( document ).on( "pageinit", function() {
 });
 
 $(function() {
-    Fas.attach(document.body);
+    FastClick.attach(document.body);
 });
 
 // Photo Gallery swiper script
@@ -63,7 +63,7 @@ $.getJSON( dataURL, function( newsObj ) {
 })
 .done(function(){
 	$("#news_events_page .load-more-news").css( 'visibility', 'visible' );
-	$("#news_events_page #news li a").on( 'touchstart', function(){
+	$("#news_events_page #news li a").on( 'touchstart click', function(){
 		$("#full_news_page .news_content .content").hide();
 		$("#full_news_page .loading").show();		
 		var newsID = $(this).attr( "id" );
@@ -86,7 +86,7 @@ $.getJSON( dataURL, function( newsObj ) {
 	})
 })
 
-$('#load-news').on('touchstart', function(e) {
+$('#load-news').on('touchstart click', function(e) {
 	e.preventDefault();
 	var flag  = false;
 	var counter = 0;
@@ -118,7 +118,7 @@ $('#load-news').on('touchstart', function(e) {
 	})
 	.done( function(){
 		$('#news_events_page .loading').fadeOut();
-		$("#news_events_page #news li a").on( 'touchstart', function(){
+		$("#news_events_page #news li a").on( 'touchstart click', function(){
 			$("#full_news_page .news_content .content").hide();
 			$('#full_news_page .loading').show();
 			var newsID = $(this).attr( "id" );
@@ -142,7 +142,7 @@ $('#load-news').on('touchstart', function(e) {
 	})
 });
 
-$('#load-img').on('touchstart', function(e) {
+$('#load-img').on('touchstart click', function(e) {
 	e.preventDefault();	
 	var flag  = false;
 	var counter = 0;
@@ -190,7 +190,7 @@ $(document).ready( function() {
 
 	google.maps.event.addDomListener( window, 'load', mapinit );
 	//google.maps.event.trigger($('#map-canvas'), 'resize');
-	$('[href="#map_page"]').on( 'touchstart', function(){
+	$('[href="#map_page"]').on( 'touchstart click', function(){
 		setTimeout( function(){
 			window.location.reload();
 			window.location.href = 'main.html#map_page';
@@ -200,7 +200,7 @@ $(document).ready( function() {
 
 // Admissions Page Functions
 // Functions to load scholarship page
-$("#admissionPage ul li a").on('touchstart', function(){
+$("#admissionPage ul li a").on('touchstart click', function(){
 	$("#admContent .loading").show();
 	$("#admContent .content").hide();
 	$("#admContent .content .pg_img").attr( 'src', '#' );

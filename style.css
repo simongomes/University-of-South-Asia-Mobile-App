@@ -288,7 +288,8 @@ body, .ui-content, .ui-page{
 	border-radius: 3px;
 	border-style: solid;
 }
-#full_news_page .news_content .news_title{
+#full_news_page .news_content .news_title,
+#admContent .content .pg_title{
 	font-family: 'Oswald',sans-serif;
 	font-size: 18px;
 	text-transform: uppercase;
@@ -319,4 +320,8 @@ body, .ui-content, .ui-page{
 	border-color: #E5E6E9 #DFE0E4 #D0D1D5;
 	border-radius: 3px;
 	border-style: solid;
+}
+#admContent .content .pg_img{
+	width: 100%;
+	margin-bottom: 15px;
 }

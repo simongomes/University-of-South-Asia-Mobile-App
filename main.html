@@ -83,6 +83,43 @@
 		    <a href="#" id="load-img" class="load-more-img" data-role="button" data-iconpos="right" data-theme="b">Load More</a>
 	    </div>
 	</div><!-- /#page -->
+	
+	<div data-role="page" id="admissionPage">
+		 <!-- header -->
+	    <div data-role="header" data-position="fixed" data-tap-toggle="false"><a href="#mypanel" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-corner-all" style="background: #CA232A; border-color: darkred; margin-right: -22px;"></a>
+	        <h1 style="margin: 0;">UNIVERSITY OF SOUTH ASIA</h1>
+	    </div>
+	 	<div data-role="content">
+	 		<ul data-role="listview" data-inset="true" data-theme="b">
+	 			<li data-role="list-divider">Admission</li>
+				<li><a href="#admContent" id="adm_req" data-transition="slidefade">Requirment</a></li>
+				<li><a href="#admContent" id="schlr" data-transition="slidefade">Scholarships &amp; Waiver</a></li>
+				<li><a href="#admContent" id="admission" data-transition="slidefade">Rules &amp; Regulations</a></li>
+			</ul>
+	 	</div>
+	</div><!-- /#page -->
+	<div data-role="page" id="admContent">
+		 <!-- header -->
+	    <div data-role="header" data-position="fixed" data-tap-toggle="false"><a href="#" class="ui-btn ui-btn-icon-notext ui-icon-back ui-corner-all" style="background: #CA232A; border-color: darkred; margin-right: -22px;" data-rel="back"></a>
+	        <h1 style="margin: 0;">UNIVERSITY OF SOUTH ASIA</h1>
+	    </div>	    
+	 	<div data-role="content">
+	 		<div class="loading" style="display: none;">
+			<div class="facebookG">
+				<div class="blockG_1 facebook_blockG"></div>
+				<div class="blockG_2 facebook_blockG"></div>
+				<div class="blockG_3 facebook_blockG"></div>
+			</div>
+		</div>
+		<div class="content">
+			<h4 class="pg_title"></h4>
+			<img class="pg_img" src="#" />
+			<div class="pg_content"></div>
+		</div><!-- /.content -->
+
+	 	</div><!-- /[data-role="content"] -->
+	</div><!-- /#page -->
+
 	<div data-role="page" id="map_page">
 		 <!-- header -->
 	    <div data-role="header" data-position="fixed" data-tap-toggle="false"><a href="#mypanel" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-corner-all" style="background: #CA232A; border-color: darkred; margin-right: -22px;"></a>
@@ -103,21 +140,7 @@
 		    	<p><strong>E-mail:</strong> <a href="mailto:someone@example.com?Subject=Hello%20again">mail@southasia-uni.org</a></p>
 		    </div>
 	 	</div>
-	</div>
-	<div data-role="page" id="admissionPage">
-		 <!-- header -->
-	    <div data-role="header" data-position="fixed" data-tap-toggle="false"><a href="#mypanel" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-corner-all" style="background: #CA232A; border-color: darkred; margin-right: -22px;"></a>
-	        <h1 style="margin: 0;">UNIVERSITY OF SOUTH ASIA</h1>
-	    </div>
-	 	<div data-role="content">
-	 		<ul data-role="listview" data-inset="true" data-theme="b">
-	 			<li data-role="list-divider">Admission</li>
-				<li><a href="acura.html">Requirment</a></li>
-				<li><a href="audi.html">Scholarships &amp; Waiver</a></li>
-				<li><a href="bmw.html">BMW</a></li>
-			</ul>
-	 	</div>
-	</div>
+	</div><!-- /#page -->
 	
 	<!--<script type="text/javascript" src="phonegap.js"></script>-->
 	<script src="js/jquery-1.10.2.min.js"></script>

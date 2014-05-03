@@ -30,6 +30,14 @@
 		    <ul id="news">
 			    <!-- this section will be populated with news title from database using ajax call -->	
 			</ul>
+
+			<div class="loading" style="display: none;">
+				<div class="facebookG">
+					<div class="blockG_1 facebook_blockG"></div>
+					<div class="blockG_2 facebook_blockG"></div>
+					<div class="blockG_3 facebook_blockG"></div>
+				</div>
+			</div>
 			<a href="#" id="load-news" class="load-more-news" data-role="button" data-iconpos="right" data-theme="b">Load More</a>
 	    </div>
 	</div><!-- /page -->
@@ -47,6 +55,13 @@
 				<div class="news_desc"></div>
 			</div>
 	    </div>
+	    <div class="loading" style="display: none;">
+			<div class="facebookG">
+				<div class="blockG_1 facebook_blockG"></div>
+				<div class="blockG_2 facebook_blockG"></div>
+				<div class="blockG_3 facebook_blockG"></div>
+			</div>
+		</div>
 	</div><!-- /page -->
 	<div data-role="page" id="photo_page">
 	    <!-- header -->
@@ -58,6 +73,13 @@
 		    <div class="image_gallery">	
 		    	<!-- This section will be populated by images from the image json feed usin ajax on the fly -->	    	
 		    </div>
+		    <div class="loading" style="display: none;">
+				<div class="facebookG">
+					<div class="blockG_1 facebook_blockG"></div>
+					<div class="blockG_2 facebook_blockG"></div>
+					<div class="blockG_3 facebook_blockG"></div>
+				</div>
+			</div>
 		    <a href="#" id="load-img" class="load-more-img" data-role="button" data-iconpos="right" data-theme="b">Load More</a>
 	    </div>
 	</div><!-- /#page -->
@@ -80,7 +102,21 @@
 		    	<p><strong>Mobile:</strong> 0176 3030636, 01686265125, 0196 6459878</p>
 		    	<p><strong>E-mail:</strong> <a href="mailto:someone@example.com?Subject=Hello%20again">mail@southasia-uni.org</a></p>
 		    </div>
-	 	</div>	
+	 	</div>
+	</div>
+	<div data-role="page" id="admissionPage">
+		 <!-- header -->
+	    <div data-role="header" data-position="fixed" data-tap-toggle="false"><a href="#mypanel" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-corner-all" style="background: #CA232A; border-color: darkred; margin-right: -22px;"></a>
+	        <h1 style="margin: 0;">UNIVERSITY OF SOUTH ASIA</h1>
+	    </div>
+	 	<div data-role="content">
+	 		<ul data-role="listview" data-inset="true" data-theme="b">
+	 			<li data-role="list-divider">Admission</li>
+				<li><a href="acura.html">Requirment</a></li>
+				<li><a href="audi.html">Scholarships &amp; Waiver</a></li>
+				<li><a href="bmw.html">BMW</a></li>
+			</ul>
+	 	</div>
 	</div>
 	
 	<!--<script type="text/javascript" src="phonegap.js"></script>-->

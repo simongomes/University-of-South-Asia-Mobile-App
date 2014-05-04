@@ -225,14 +225,13 @@ body, .ui-content, .ui-page{
 	display: block;
 	float: left;
 	margin-right: 5px;
-	width: 30px;
-	height: 33px;
+	width: 50px;
+	height: 55px;
 	text-indent: -9999px;
 	background: url('./img/social-icons.png') no-repeat top left;
 }
-#mypanel .social-links a.tw{ background-position: 0 -34px; }
-#mypanel .social-links a.vm{ background-position: 0 -68px; } 
-#mypanel .social-links a.yt{ background-position: 0 -102px; }
+#mypanel .social-links a.vm{ background-position: 0 -114px; } 
+#mypanel .social-links a.yt{ background-position: 0 -171px; }
 
 /* News and Events Page style */
 #news_events_page #news li{

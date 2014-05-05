@@ -288,7 +288,7 @@ body, .ui-content, .ui-page{
 	border-style: solid;
 }
 #full_news_page .news_content .news_title,
-#admContent .content .pg_title{
+.content .pg_title{
 	font-family: 'Oswald',sans-serif;
 	font-size: 18px;
 	text-transform: uppercase;
@@ -323,4 +323,8 @@ body, .ui-content, .ui-page{
 #admContent .content .pg_img{
 	width: 100%;
 	margin-bottom: 15px;
+}
+#admContent .content,
+#msgContent .content{
+	font-family: 'Arial',sans-serif;
 }

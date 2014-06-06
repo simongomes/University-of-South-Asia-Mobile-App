@@ -17,7 +17,23 @@
 	        <h1 style="margin: 0;">UNIVERSITY OF SOUTH ASIA</h1>
 	    </div>
 	    <!-- content -->
-	    <div data-role="content">	        	        	 		
+	    <div data-role="content">
+	    	<div class="content">
+	    		<div class="news_events">
+	    			<h3 class="sec_title">News and Events</h3>	    			
+	    		</div><!-- /.news_events -->
+	    		<a href="#news_events_page" class="view-more-news" data-role="button" data-theme="b" style="display:none; margin-bottom: 20px;">View More News</a>
+
+	    		<div class="photos">
+	    			<h3 class="sec_title">Photos</h3>
+	    		</div><!-- /.photos -->
+	    		<a href="#photo_page" class="view-more-photos" data-role="button" data-theme="b" style="display:none; margin-bottom: 20px;">View More Photos</a>
+
+	    		<div class="videos">
+	    			<h3 class="sec_title">Videos</h3>
+	    		</div><!-- /.photos -->
+	    		<a href="#video_page" class="view-more-videos" data-role="button" data-theme="b" style="display:none; margin-bottom: 20px;">View More Videos</a>
+	    	</div><!-- /.content -->	        	        	 		
 	    </div>	    	    
 	</div><!-- /page -->
 
@@ -28,7 +44,7 @@
 	    </div>
 	    <!-- content -->
 	    <div data-role="content">
-	    	<ul data-role="listview" data-inset="true" data-theme="b">
+	    	<ul data-role="listview" data-theme="b">
 	 			<li data-role="list-divider">MESSAGE</li>
 				<li><a href="#msgContent" data-pg-var="vc_pfile" id="vc_msg" data-transition="slidefade">Message from VC</a></li>
 				<li><a href="#msgContent" data-pg-var="provc_pfile" id="provc_msg" data-transition="slidefade">Message from Pro-VC</a></li>				
@@ -127,6 +143,26 @@
 		    <a href="#" id="load-img" class="load-more-img" data-role="button" data-iconpos="right" data-theme="b">Load More</a>
 	    </div>
 	</div><!-- /#page -->
+
+	<div data-role="page" id="video_page">
+		 <!-- header -->
+	    <div data-role="header" data-position="fixed" data-tap-toggle="false"><a href="#mypanel" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-corner-all" style="background: #CA232A; border-color: darkred; margin-right: -22px;"></a>
+	        <h1 style="margin: 0;">UNIVERSITY OF SOUTH ASIA</h1>
+	    </div>
+	 	<div data-role="content">
+	 		<ul id="videos">
+	 			<!-- This section will be populated  with the video contents on the fly from DB json feed-->
+	 		</ul><!-- /.videos -->
+	 		<div class="loading" style="display: none;">
+				<div class="facebookG">
+					<div class="blockG_1 facebook_blockG"></div>
+					<div class="blockG_2 facebook_blockG"></div>
+					<div class="blockG_3 facebook_blockG"></div>
+				</div>
+			</div>
+		    <a href="#" id="load-vid" class="load-more-vid" data-role="button" data-iconpos="right" data-theme="b">Load More</a>
+	 	</div>	
+	</div><!--/page -->
 	
 	<div data-role="page" id="admissionPage">
 		 <!-- header -->
@@ -134,7 +170,7 @@
 	        <h1 style="margin: 0;">UNIVERSITY OF SOUTH ASIA</h1>
 	    </div>
 	 	<div data-role="content">
-	 		<ul data-role="listview" data-inset="true" data-theme="b">
+	 		<ul data-role="listview" data-theme="b">
 	 			<li data-role="list-divider">ADMISSION</li>
 				<li><a href="#admContent" id="adm_req" data-transition="slidefade">Requirment</a></li>
 				<li><a href="#admContent" id="schlr" data-transition="slidefade">Scholarships &amp; Waiver</a></li>

@@ -191,10 +191,29 @@ body, .ui-content, .ui-page{
 #mypanel .panel_nav li:hover{
 	background: #F1701F;
 }
+/* Home Page Style */
+#homePage [data-role="content"] .content h3.sec_title{
+	font-family: 'Oswald',sans-serif;
+	font-size: 20px;
+	text-transform: uppercase;
+	color: #7D7D7D;
+	border-bottom: 1px solid #E1E1E1;
+	padding-bottom: 5px;
+	font-weight: 400;
+	margin-top: 0px;
+	display: none;
+}
+#homePage a[data-role="button"]{
+	font-size: 15px;
+	font-weight: 400;
+	font-style: italic;
+	color: #8b8b8b;
+}
 #photo_page .image_gallery{
 	width: 100%;
 }
-#photo_page .image_gallery a{
+#photo_page .image_gallery a,
+#homePage .content .phptos a{
 	display: block;
 	background: #FFFFFF;
 	padding: 10px;
@@ -204,7 +223,8 @@ body, .ui-content, .ui-page{
 	border-style: solid;
 	margin-bottom: 5px;
 }
-#photo_page .image_gallery img{
+#photo_page .image_gallery img,
+#homePage .content .photos img{
 	width: 100%;
 	display: block;
 }
@@ -234,7 +254,9 @@ body, .ui-content, .ui-page{
 #mypanel .social-links a.yt{ background-position: 0 -171px; }
 
 /* News and Events Page style */
-#news_events_page #news li{
+#news_events_page #news li,
+#video_page #videos li,
+#homePage .content .item{
 	display: block;
 	background: #FFFFFF;
 	padding: 10px;
@@ -244,30 +266,49 @@ body, .ui-content, .ui-page{
 	border-style: solid;
 	margin-bottom: 10px;
 }
-#news_events_page #news li a{
+#news_events_page #news li a,
+#video_page #videos li a,
+#homePage .content .item a{
 	color: #7D7D7D;
 	font-weight: 400;
 }
-#news_events_page #news li .title{
+#news_events_page #news li .title,
+#video_page #videos li .title,
+#homePage .content .item .title{
 	font-family: 'Oswald',sans-serif;
 	text-transform: uppercase;
 	border-bottom: 1px solid #E1E1E1;
 	padding-bottom: 5px;
 	margin-top: 0;
+	color: #7D7D7D;
+	font-weight: 400;
 }
-#news_events_page #news li .news-img{
+#news_events_page #news li .news-img,
+#homePage .content .item .news-img{
 	width: 100%;
 	display: block;
 }
-#news_events_page #news li .news-desc{
+#news_events_page #news li .news-desc,
+#homePage .content .item .news-desc{
 	font-family: 'Oswald',sans-serif;
 	font-weight: 100;
 }
-#news_events_page #news li .read-more{
+#news_events_page #news li .read-more,
+#homePage .content .read-more{
 	font-style: italic;
 }
+#video_page #videos object,
+#homePage .videos object{
+	width: 100%;
+	height: 100%;
+}
+#video_page #videos li [class*="vid"],
+#homePage .videos div [class*="vid"]{
+	display: none;
+}
 #news_events_page .load-more-news,
-#photo_page .load-more-img{
+#photo_page .load-more-img,
+#video_page .load-more-vid{
 	font-size: 15px;
 	font-weight: 400;
 	font-style: italic;

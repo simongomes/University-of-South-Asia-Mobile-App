@@ -1,5 +1,5 @@
 // Pannel script 
-var panel = '<div data-role="panel" id="mypanel" data-display="reveal" style="background:#BC242A;">' + '<ul class="panel_nav"><li><a href="#homePage">Home</a></li><li><a href="#msgPage">Message</a></li><li><a href="#admissionPage">Admissions</a></li><li><a href="#business_scl_page">Business School</a></li><li><a href="#news_events_page">News, Events &amp; Notice</a></li><li><a href="#photo_page">Photo Gallery</a></li><li><a href="http://103.17.37.71/elearning/">eLearning</a></li><li><a href="http://103.17.37.71/index.php">South Asia Connect</a></li><li><a href="#map_page">Map</a></li><li><a href="#contact_page">Contact Us</a></li></ul><div class="social-links"><a class="fb" href="https://www.facebook.com/pages/University-of-South-Asia/384978734950628">Facebook</a><a class="yt" href="https://www.youtube.com/channel/UCxezjINjUWgwQ62NZbomRpw">Youtube</a><a class="vm" href="https://vimeo.com/user19719682">Vimeo</a></div></div>';
+var panel = '<div data-role="panel" id="mypanel" data-display="reveal" style="background:#BC242A;">' + '<ul class="panel_nav"><li><a href="#homePage">Home</a></li><li><a href="#msgPage">Message</a></li><li><a href="#admissionPage">Admissions</a></li><li><a href="#business_scl_page">Business School</a></li><li><a href="#news_events_page">News, Events &amp; Notice</a></li><li><a href="#photo_page">Photo Gallery</a></li><li><a href="#video_page">Video Gallery</a></li><li><a href="http://103.17.37.71/elearning/">eLearning</a></li><li><a href="http://103.17.37.71/index.php">South Asia Connect</a></li><li><a href="#map_page">Map</a></li><li><a href="#contact_page">Contact Us</a></li></ul><div class="social-links"><a class="fb" href="https://www.facebook.com/pages/University-of-South-Asia/384978734950628">Facebook</a><a class="yt" href="https://www.youtube.com/channel/UCxezjINjUWgwQ62NZbomRpw">Youtube</a><a class="vm" href="https://vimeo.com/user19719682">Vimeo</a></div></div>';
 $(document).one('pagebeforecreate', function () {
     $.mobile.pageContainer.prepend( panel );
     $("#mypanel").panel();
@@ -28,11 +28,18 @@ $.getJSON( dataURL,  function( photoObj ) {
 			counter++;
 			$('#photo_page .image_gallery').append("<a id='" + photoObj[index].img_id + "'' rel='gallery' href='http://www.southasia-uni.org/files/photos/" + photoObj[index].img_filename + ".hdq." + photoObj[index].img_extension + "'class='swipebox'><img src='http://www.southasia-uni.org/files/photos/" + photoObj[index].img_filename + ".mid." + photoObj[index].img_extension + "'></a>" );	
 			if( counter == 5 ) return false;
+
+			if( counter < 3 ){
+				$("#homePage .content .photos").append(
+					"<div class='item'><a id='" + photoObj[index].img_id + "'' rel='gallery' href='http://www.southasia-uni.org/files/photos/" + photoObj[index].img_filename + ".hdq." + photoObj[index].img_extension + "'class='swipebox'><img src='http://www.southasia-uni.org/files/photos/" + photoObj[index].img_filename + ".mid." + photoObj[index].img_extension + "'></a></div>"
+				);
+			}
 		}			
 	});
 }) // Photo Gallery swiper script
 .done(function() {
 	$("#photo_page .load-more-img").css( 'visibility', 'visible' );
+	$('#homePage .content .photos .sec_title, #homePage .content .view-more-photos').css( 'display', 'block' );
 	( function( $ ){
 		$( '.swipebox' ).swipebox({
 			hideBarsOnMobile : false
@@ -57,13 +64,24 @@ $.getJSON( dataURL, function( newsObj ) {
 			"<p class='news-desc'>" + news_desc + "</p><a href='#full_news_page' id='" + 
 			newsObj[index].news_id + "' class='read-more ui-btn ui-btn-b'>Read More</a></li>"
 		)
+		if( counter < 2 ){
+			$("#homePage .content .news_events").append(
+				"<div class='item'><h3 class='title'><a href='#full_news_page' id='" + 
+			newsObj[index].news_id + 
+			"'>" + newsObj[index].news_title + 
+			"</a></h3><img class='news-img' src='http://www.southasia-uni.org/files/photos/" + $.trim( newsObj[index].news_img ) + ".mid.jpg'/>" + 
+			"<p class='news-desc'>" + news_desc + "</p><a href='#full_news_page' id='" + 
+			newsObj[index].news_id + "' class='read-more ui-btn ui-btn-b'>Read More</a></div>"
+			);
+		}
 		counter++;
 		if( counter == 5 ) return false;
 	});
 })
 .done(function(){
 	$("#news_events_page .load-more-news").css( 'visibility', 'visible' );
-	$("#news_events_page #news li a").on( 'click', function(){
+	$("#homePage .news_events .sec_title, #homePage .view-more-news").css( 'display', 'block' );
+	$("#news_events_page #news li a, #homePage .news_events a").on( 'click', function(){
 		$("#full_news_page .news_content .content").hide();
 		$("#full_news_page .loading").show();
 		dataURL = "http://www.southasia-uni.org/includes/mobileappcontent/news_events.php";		
@@ -260,3 +278,80 @@ $("#msgPage ul li a").on( 'click', function(){
 
 	});
 });
+
+// Video page functions
+dataURL = "http://www.southasia-uni.org/includes/mobileappcontent/video_page.php";
+$.getJSON(dataURL, function( vidObj ) {
+	$("#video_page .content .loading").show();
+	$("#video_page .content .load-more-vid").hide();
+	counter = 0;
+	$.each( vidObj, function( index, val ) {		
+		$("#video_page #videos").append(
+			"<li><h3 class='title'>" + vidObj[index].vid_name + "</h3>" + 
+			"<div class='vid"+ index + "' id='"+ vidObj[index].vid_id +"'>"+ vidObj[index].vid_embed +"</div>" + 
+			"<object class='obj" + index + "' data='#'><param name='allowfullscreen' value='true' /></object>" +
+			"</li>"
+		);
+
+		if( counter < 2 ){
+			$("#homePage .content .videos").append(
+				"<div class='item'><h3 class='title'>" + vidObj[index].vid_name + "</h3>" + 
+				"<div class='vid"+ index + "' id='"+ vidObj[index].vid_id +"'>"+ vidObj[index].vid_embed +"</div>" + 
+				"<object class='obj" + index + "' data='#'><param name='allowfullscreen' value='true' /></object>" +
+				"</div>"
+			);
+
+			$( "#homePage .videos .vid" + index ).html( $("#homePage .videos .vid" + index ).text() );
+			var source = $( "#homePage .videos .vid" + index + " iframe" ).attr( 'src' );
+			if( source.substr(0, 5) != "http:"){ source = "http:" + source; }
+			$( "#homePage .videos div .obj" + index ).attr( 'data',  source );
+		}
+
+		$( "#video_page #videos .vid" + index ).html( $("#video_page #videos .vid" + index ).text() );
+		var source = $( "#video_page #videos .vid" + index + " iframe" ).attr( 'src' );
+		if( source.substr(0, 5) != "http:"){ source = "http:" + source; }
+		$( "#video_page #videos li .obj" + index ).attr( 'data',  source );				
+
+		counter++;
+		if( counter == 5 ) return false;
+	})	
+})
+.done( function(){
+	$("#video_page .load-more-vid").css( 'visibility', 'visible' );
+	$("#homePage .content .videos .sec_title, #homePage .content .view-more-videos").css('display', 'block');		
+});
+
+$("#load-vid").on( 'click', function(e){
+	e.preventDefault();
+	var flag  = false;
+	var counter = 0;
+	$('#video_page .loading').show();
+	var lastID = $('#video_page #videos li:last-child [class*="vid"]').attr('id');
+	$.getJSON( dataURL, function( vidObj ) {
+		$.each( vidObj, function(index, val) {
+			if(  vidObj[index].vid_id == lastID ){
+				flag = true;
+				return;
+			}
+			if( flag == true ){
+				$("#video_page #videos").append(
+					"<li><h3 class='title'>" + vidObj[index].vid_name + "</h3>" + 
+					"<div class='vid"+ index + "' id='"+ vidObj[index].vid_id +"'>"+ vidObj[index].vid_embed +"</div>" + 
+					"<object class='obj" + index + "' data='#'><param name='allowfullscreen' value='true' /></object>" +
+					"</li>"
+				);
+				$( "#video_page #videos .vid" + index ).html( $("#video_page #videos .vid" + index ).text() );
+				var source = $( "#video_page #videos .vid" + index + " iframe" ).attr( 'src' );
+				if( source.substr(0, 5) != "http:"){ source = "http:" + source; }
+				$( "#video_page #videos li .obj" + index ).attr( 'data',  source );
+
+				counter++;
+				if( counter == 5 ) return false;
+			}
+		})
+	})
+	.done( function(){
+		$('#video_page .loading').fadeOut('fast');
+	});
+})
+

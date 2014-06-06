@@ -288,7 +288,8 @@ body, .ui-content, .ui-page{
 	border-style: solid;
 }
 #full_news_page .news_content .news_title,
-.content .pg_title{
+.content .pg_title,
+.content .title{
 	font-family: 'Oswald',sans-serif;
 	font-size: 18px;
 	text-transform: uppercase;
@@ -320,11 +321,18 @@ body, .ui-content, .ui-page{
 	border-radius: 3px;
 	border-style: solid;
 }
-#admContent .content .pg_img{
+#admContent .content .pg_img,
+.content .pg_img{
 	width: 100%;
 	margin-bottom: 15px;
 }
 #admContent .content,
 #msgContent .content{
 	font-family: 'Arial',sans-serif;
+}
+
+#msgContent .content .message{
+	margin-bottom: 20px;
+	padding-bottom: 30px
+	border-bottom: 1px solid #E1E1E1;
 }

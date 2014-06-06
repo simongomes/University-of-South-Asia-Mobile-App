@@ -30,8 +30,8 @@
 	    <div data-role="content">
 	    	<ul data-role="listview" data-inset="true" data-theme="b">
 	 			<li data-role="list-divider">MESSAGE</li>
-				<li><a href="#msgContent" id="vc_msg" data-transition="slidefade">Message from VC</a></li>
-				<li><a href="#msgContent" id="provc_msg" data-transition="slidefade">Message from Pro-VC</a></li>				
+				<li><a href="#msgContent" data-pg-var="vc_pfile" id="vc_msg" data-transition="slidefade">Message from VC</a></li>
+				<li><a href="#msgContent" data-pg-var="provc_pfile" id="provc_msg" data-transition="slidefade">Message from Pro-VC</a></li>				
 			</ul>	        	        	 		
 	    </div>
 
@@ -51,8 +51,15 @@
 			</div>
 		</div>
 		<div class="content">
-			<h4 class="pg_title"></h4>
-			<div class="pg_content"></div>
+			<div class="message">
+				<h4 class="title"></h4>
+				<div class="pg_content"></div>
+			</div><!-- /.message -->
+			<div class="profile">
+				<h4 class="title"></h4>
+				<img class="pg_img" src="#" />
+				<div class="pg_content"></div>
+			</div><!-- /.profile -->		
 		</div><!-- /.content -->
 
 	 	</div><!-- /[data-role="content"] -->
@@ -157,13 +164,27 @@
 	 	</div><!-- /[data-role="content"] -->
 	</div><!-- /#page -->
 
+	<div data-role="page" id="business_scl_page">
+		 <!-- header -->
+	    <div data-role="header" data-position="fixed" data-tap-toggle="false"><a href="#mypanel" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-corner-all" style="background: #CA232A; border-color: darkred; margin-right: -22px;"></a>
+	        <h1 style="margin: 0;">UNIVERSITY OF SOUTH ASIA</h1>
+	    </div>
+	 	<div data-role="content">	 		
+			<div class="content">
+				<h4 class="pg_title"></h4>
+				<img class="pg_img" src="#" />
+				<div class="pg_content"></div>
+			</div><!-- /.content -->
+	 	</div><!-- /[data-role="content"] -->
+	</div><!--/page -->
+
 	<div data-role="page" id="map_page">
 		 <!-- header -->
 	    <div data-role="header" data-position="fixed" data-tap-toggle="false"><a href="#mypanel" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-corner-all" style="background: #CA232A; border-color: darkred; margin-right: -22px;"></a>
 	        <h1 style="margin: 0;">UNIVERSITY OF SOUTH ASIA</h1>
 	    </div>
 	 	<div id="map-canvas"></div>	
-	</div>
+	</div><!--/page -->
 	<div data-role="page" id="contact_page">
 		 <!-- header -->
 	    <div data-role="header" data-position="fixed" data-tap-toggle="false"><a href="#mypanel" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-corner-all" style="background: #CA232A; border-color: darkred; margin-right: -22px;"></a>

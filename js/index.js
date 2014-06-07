@@ -254,23 +254,24 @@ $("#msgPage ul li a").on( 'click', function(){
 	var pg_var_msg = $(this).attr('id');
 	var dataURL = 'http://www.southasia-uni.org/includes/mobileappcontent/get_page.php';
 
-	$.getJSON( dataURL, { pg_var: pg_var_profile }, function( data ) {
-		/*$("#msgContent .content .profile .title").text( data[0].pg_header );*/
-		if( data[0].pg_var == "vc_pfile" ){
-			$("#msgContent .content .profile .title").text( "Profile of VC" );
-		} else if( data[0].pg_var == "provc_pfile" ){
-			$("#msgContent .content .profile .title").text( "Profile of Pro-VC" );
-		}
-		$("#msgContent .content .profile .pg_img").attr( 'src', 'http://www.southasia-uni.org/files/photos/' + $.trim( data[0].pg_img ) + '.hdq.jpg' );
-		$("#msgContent .content .profile .pg_content").html( data[0].pg_content );
-		$("#msgContent .content .profile .pg_content").html( $("#msgContent .content .pg_content").text() );	
+	$.getJSON( dataURL, { pg_var: pg_var_msg }, function( data ) {
+		$("#msgContent .content .message .title").text( data[0].pg_header );
+		$("#msgContent .content .message .pg_content").html( data[0].pg_content );
+		$("#msgContent .content .message .pg_content").html( $("#msgContent .content .message .pg_content").text() );	
 	})
 	.done( function(){
-		$.getJSON( dataURL, { pg_var: pg_var_msg }, function( data ) {
-			$("#msgContent .content .message .title").text( data[0].pg_header );
-			$("#msgContent .content .message .pg_content").html( data[0].pg_content );
-			$("#msgContent .content .message .pg_content").html( $("#msgContent .content .pg_content").text() );	
+		$.getJSON( dataURL, { pg_var: pg_var_profile }, function( data ) {
+			/*$("#msgContent .content .profile .title").text( data[0].pg_header );*/
+			if( data[0].pg_var == "vc_pfile" ){
+				$("#msgContent .content .profile .title").text( "Profile of VC" );
+			} else if( data[0].pg_var == "provc_pfile" ){
+				$("#msgContent .content .profile .title").text( "Profile of Pro-VC" );
+			}
+			$("#msgContent .content .profile .pg_img").attr( 'src', 'http://www.southasia-uni.org/files/photos/' + $.trim( data[0].pg_img ) + '.hdq.jpg' );
+			$("#msgContent .content .profile .pg_content").html( data[0].pg_content );
+			$("#msgContent .content .profile .pg_content").html( $("#msgContent .content .profile .pg_content").text() );	
 		})
+		
 		.done( function(){
 			$("#msgContent .loading").hide();
 			$("#msgContent .content").fadeIn();

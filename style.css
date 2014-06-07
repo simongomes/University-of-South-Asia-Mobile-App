@@ -377,3 +377,6 @@ body, .ui-content, .ui-page{
 	padding-bottom: 30px
 	border-bottom: 1px solid #E1E1E1;
 }
+#business_scl_page [data-role="content"]{
+	background: #ffffff;
+}

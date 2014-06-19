@@ -1,5 +1,5 @@
 // Pannel script 
-var panel = '<div data-role="panel" id="mypanel" data-display="reveal" style="background:#BC242A;">' + '<ul class="panel_nav"><li><a href="#homePage">Home</a></li><li><a href="#msgPage">Message</a></li><li><a href="#admissionPage">Admissions</a></li><li><a href="#business_scl_page">Business School</a></li><li><a href="#news_events_page">News, Events &amp; Notice</a></li><li><a href="#photo_page">Photo Gallery</a></li><!--<li><a href="#video_page">Video Gallery</a></li><li><a href="http://103.17.37.71/elearning/">eLearning</a></li><li><a href="http://103.17.37.71/index.php">South Asia Connect</a></li>--><li><a href="#map_page">Map</a></li><li><a href="#contact_page">Contact Us</a></li></ul><div class="social-links"><a class="fb" href="https://www.facebook.com/pages/University-of-South-Asia/384978734950628">Facebook</a><a class="yt" href="https://www.youtube.com/channel/UCxezjINjUWgwQ62NZbomRpw">Youtube</a><a class="vm" href="https://vimeo.com/user19719682">Vimeo</a></div></div>';
+var panel = '<div data-role="panel" id="mypanel" data-display="reveal" style="background:#BC242A;">' + '<ul class="panel_nav"><li><a href="#homePage">Home</a></li><li><a href="#msgPage">Message</a></li><li><a href="#admissionPage">Admissions</a></li><li><a href="#business_scl_page">Business School</a></li><li><a href="#engineering_scl_page">School of Engineering</a></li><li><a href="#humanities_scl_page">School of Humanities</a></li><li><a href="#pblic_scl_page">School Public Health and Life Science</a></li><li><a href="#dept_page">Departments</a></li><li><a href="#news_events_page">News, Events &amp; Notice</a></li><li><a href="#photo_page">Photo Gallery</a></li><li><a href="#map_page">Map</a></li><li><a href="#contact_page">Contact Us</a></li></ul><div class="social-links"><a class="fb" href="https://www.facebook.com/pages/University-of-South-Asia/384978734950628">Facebook</a><a class="yt" href="https://www.youtube.com/channel/UCxezjINjUWgwQ62NZbomRpw">Youtube</a><a class="vm" href="https://vimeo.com/user19719682">Vimeo</a></div></div>';
 $(document).one('pagebeforecreate', function () {
     $.mobile.pageContainer.prepend( panel );
     $("#mypanel").panel();
@@ -246,6 +246,56 @@ $.getJSON( dataURL, { pg_var: 'sch_of_biz' }, function( data ) {
 	$("#business_scl_page .content .pg_content").html( $("#business_scl_page .content .pg_content").text() );	
 });
 
+//Engineering Page Function
+dataURL = 'http://www.southasia-uni.org/includes/mobileappcontent/get_page.php';
+$.getJSON( dataURL, { pg_var: 'sch_of_engr' }, function( data ) {
+	$("#engineering_scl_page .content .pg_title").text( data[0].pg_header );
+	$("#engineering_scl_page .content .pg_img").attr( 'src', 'http://www.southasia-uni.org/files/photos/' + $.trim( data[0].pg_img ) + '.hdq.JPG' );
+	$("#engineering_scl_page .content .pg_content").html( data[0].pg_content );
+	$("#engineering_scl_page .content .pg_content").html( $("#engineering_scl_page .content .pg_content").text() );	
+});
+
+//Humanities Page Function
+dataURL = 'http://www.southasia-uni.org/includes/mobileappcontent/get_page.php';
+$.getJSON( dataURL, { pg_var: 'sch_of_hum' }, function( data ) {
+	$("#humanities_scl_page .content .pg_title").text( data[0].pg_header );
+	$("#humanities_scl_page .content .pg_img").attr( 'src', 'http://www.southasia-uni.org/files/photos/' + $.trim( data[0].pg_img ) + '.hdq.jpg' );
+	$("#humanities_scl_page .content .pg_content").html( data[0].pg_content );
+	$("#humanities_scl_page .content .pg_content").html( $("#humanities_scl_page .content .pg_content").text() );	
+});
+
+//Public Science Page Function
+dataURL = 'http://www.southasia-uni.org/includes/mobileappcontent/get_page.php';
+$.getJSON( dataURL, { pg_var: 'sch_of_ph_ls' }, function( data ) {
+	$("#pblic_scl_page .content .pg_title").text( data[0].pg_header );
+	$("#pblic_scl_page .content .pg_img").attr( 'src', 'http://www.southasia-uni.org/files/photos/' + $.trim( data[0].pg_img ) + '.hdq.jpg' );
+	$("#pblic_scl_page .content .pg_content").html( data[0].pg_content );
+	$("#pblic_scl_page .content .pg_content").html( $("#pblic_scl_page .content .pg_content").text() );	
+});
+
+$.getJSON ( 'http://www.southasia-uni.org/includes/mobileappcontent/department_page.php', function( data ) {
+	
+	$.each( data.departments[0].business, function( index, val){
+		$('#dept_page .content .bus_cont ul').append(
+			"<li>" + val.business + "</li>"
+		)
+	})
+	$.each( data.departments[1].engineering, function( index, val){
+		$('#dept_page .content .eng_cont ul').append(
+			"<li>" + val.engineering + "</li>"
+		)
+	})
+	$.each( data.departments[2].humanities, function( index, val){
+		$('#dept_page .content .hum_cont ul').append(
+			"<li>" + val.humanities + "</li>"
+		)
+	})	
+	$.each( data.departments[3].public_health, function( index, val){
+		$('#dept_page .content .bublic_cont ul').append(
+			"<li>" + val.public_health + "</li>"
+		)		
+	})
+});
 // Message page function
 $("#msgPage ul li a").on( 'click', function(){
 	$("#msgContent .loading").show();

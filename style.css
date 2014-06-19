@@ -380,3 +380,13 @@ body, .ui-content, .ui-page{
 #business_scl_page [data-role="content"]{
 	background: #ffffff;
 }
+
+#dept_page ul li {
+	margin: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #cdcdcd;
+}
+#dept_page ul li:last-child{
+	border: none;
+	padding-bottom: 0;
+}

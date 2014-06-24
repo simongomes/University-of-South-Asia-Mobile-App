@@ -1,5 +1,5 @@
 // Pannel script 
-var panel = '<div data-role="panel" id="mypanel" data-display="reveal" style="background:#BC242A;">' + '<ul class="panel_nav"><li><a href="#homePage">Home</a></li><li><a href="#msgPage">Message</a></li><li><a href="#admissionPage">Admissions</a></li><li><a href="#business_scl_page">Business School</a></li><li><a href="#engineering_scl_page">School of Engineering</a></li><li><a href="#humanities_scl_page">School of Humanities</a></li><li><a href="#pblic_scl_page">School Public Health and Life Science</a></li><li><a href="#dept_page">Departments</a></li><li><a href="#news_events_page">News, Events &amp; Notice</a></li><li><a href="#photo_page">Photo Gallery</a></li><li><a href="#map_page">Map</a></li><li><a href="#contact_page">Contact Us</a></li></ul><div class="social-links"><a class="fb" href="https://www.facebook.com/pages/University-of-South-Asia/384978734950628">Facebook</a><a class="yt" href="https://www.youtube.com/channel/UCxezjINjUWgwQ62NZbomRpw">Youtube</a><a class="vm" href="https://vimeo.com/user19719682">Vimeo</a></div></div>';
+var panel = '<div data-role="panel" id="mypanel" data-display="reveal" style="background:#BC242A;" data-position-fixed="true">' + '<ul class="panel_nav"><li><a href="#homePage">Home</a></li><li><a href="#msgPage">Message</a></li><li><a href="#admissionPage">Admissions</a></li><li><a href="#dept_page">Departments</a></li><li><a href="#business_scl_page">Business School</a></li><li><a href="#engineering_scl_page">School of Engineering</a></li><li><a href="#humanities_scl_page">School of Humanities</a></li><li><a href="#pblic_scl_page">School Public Health and Life Science</a></li><li><a href="#news_events_page">News, Events &amp; Notice</a></li><li><a href="#photo_page">Photo Gallery</a></li><li><a href="#map_page">Map</a></li><li><a href="#contact_page">Contact Us</a></li></ul><div class="social-links"><a class="fb" href="https://www.facebook.com/pages/University-of-South-Asia/384978734950628">Facebook</a><a class="yt" href="https://www.youtube.com/channel/UCxezjINjUWgwQ62NZbomRpw">Youtube</a><a class="vm" href="https://vimeo.com/user19719682">Vimeo</a></div></div>';
 $(document).one('pagebeforecreate', function () {
     $.mobile.pageContainer.prepend( panel );
     $("#mypanel").panel();
@@ -20,8 +20,7 @@ $(function() {
 
 // Photo Gallery swiper script
 // Fetching data from the server using ajax call
-var dataURL = "http://www.southasia-uni.org/includes/mobileappcontent/photo_page.php";
-$.getJSON( dataURL,  function( photoObj ) {
+$.getJSON( 'http://www.southasia-uni.org/includes/mobileappcontent/photo_page.php',  function( photoObj ) {
 	var counter = 0;
 	$.each( photoObj, function(index, val) {
 		if( photoObj[index].img_active == "yes" ){
@@ -48,8 +47,7 @@ $.getJSON( dataURL,  function( photoObj ) {
 });
 
 // News and Events script
-dataURL = "http://www.southasia-uni.org/includes/mobileappcontent/news_events.php";
-$.getJSON( dataURL, function( newsObj ) {
+$.getJSON( 'http://www.southasia-uni.org/includes/mobileappcontent/news_events.php', function( newsObj ) {
 	counter = 0;
 	var news_desc = '';	
 	$.each( newsObj, function(index, val) {		
@@ -83,10 +81,9 @@ $.getJSON( dataURL, function( newsObj ) {
 	$("#homePage .news_events .sec_title, #homePage .view-more-news").css( 'display', 'block' );
 	$("#news_events_page #news li a, #homePage .news_events a").on( 'click', function(){
 		$("#full_news_page .news_content .content").hide();
-		$("#full_news_page .loading").show();
-		dataURL = "http://www.southasia-uni.org/includes/mobileappcontent/news_events.php";		
+		$("#full_news_page .loading").show();				
 		var newsID = $(this).attr( "id" );
-		$.getJSON( dataURL, function( newsObj ) {
+		$.getJSON( 'http://www.southasia-uni.org/includes/mobileappcontent/news_events.php', function( newsObj ) {
 			$.each( newsObj, function( index, val ) {
 				if( newsObj[index].news_id == newsID ){
 					$("#full_news_page .news_content .news_title").text( newsObj[index].news_title );
@@ -111,7 +108,7 @@ $('#load-news').on('click', function(e) {
 	var counter = 0;
 	$('#news_events_page .loading').show();
 	var lastID = $('#news_events_page #news li:last-child .title a').attr('id');	
-	$.getJSON( dataURL, function( newsObj ) {
+	$.getJSON( 'http://www.southasia-uni.org/includes/mobileappcontent/news_events.php', function( newsObj ) {
 		var news_desc = '';
 		$.each( newsObj, function(index, val) {
 			if(  newsObj[index].news_id == lastID ){
@@ -141,7 +138,7 @@ $('#load-news').on('click', function(e) {
 			$("#full_news_page .news_content .content").hide();
 			$('#full_news_page .loading').show();
 			var newsID = $(this).attr( "id" );
-			$.getJSON( dataURL, function( newsObj ) {
+			$.getJSON( 'http://www.southasia-uni.org/includes/mobileappcontent/news_events.php', function( newsObj ) {
 				$.each( newsObj, function(index, val) {
 					if( newsObj[index].news_id == newsID ){
 						$("#full_news_page .news_content .news_title").text( newsObj[index].news_title );
@@ -167,8 +164,7 @@ $('#load-img').on('click', function(e) {
 	var counter = 0;
 	var lastID = $('#photo_page .image_gallery a:last-child').attr('id');
 	$('#photo_page .loading').show();
-	var dataURL = "http://www.southasia-uni.org/includes/mobileappcontent/photo_page.php";
-	$.getJSON( dataURL,  function( photoObj ) {		
+	$.getJSON( 'http://www.southasia-uni.org/includes/mobileappcontent/photo_page.php',  function( photoObj ) {		
 		$.each( photoObj, function(index, val) {
 			if( photoObj[index].img_id == lastID ){
 				flag = true;
@@ -223,9 +219,8 @@ $("#admissionPage ul li a").on('click', function(){
 	$("#admContent .loading").show();
 	$("#admContent .content").hide();
 	$("#admContent .content .pg_img").attr( 'src', '#' );
-	var pg_var = $(this).attr('id');
-	var dataURL = 'http://www.southasia-uni.org/includes/mobileappcontent/get_page.php';
-	$.getJSON( dataURL,{pg_var: pg_var}, function( data ) {
+	var pg_var = $(this).attr('id');	
+	$.getJSON( 'http://www.southasia-uni.org/includes/mobileappcontent/get_page.php', {pg_var: pg_var}, function( data ) {
 		$("#admContent .content .pg_title").text( data[0].pg_header );
 		$("#admContent .content .pg_img").attr( 'src', 'http://www.southasia-uni.org/files/photos/'+ $.trim( data[0].pg_img ) + '.hdq.jpg' );
 		$("#admContent .content .pg_content").html( data[0].pg_content );
@@ -238,8 +233,8 @@ $("#admissionPage ul li a").on('click', function(){
 });
 
 // Business School Page function
-dataURL = 'http://www.southasia-uni.org/includes/mobileappcontent/get_page.php';
-$.getJSON( dataURL, { pg_var: 'sch_of_biz' }, function( data ) {
+
+$.getJSON( 'http://www.southasia-uni.org/includes/mobileappcontent/get_page.php', { pg_var: 'sch_of_biz' }, function( data ) {
 	$("#business_scl_page .content .pg_title").text( data[0].pg_header );
 	$("#business_scl_page .content .pg_img").attr( 'src', 'http://www.southasia-uni.org/files/photos/' + $.trim( data[0].pg_img ) + '.hdq.jpg' );
 	$("#business_scl_page .content .pg_content").html( data[0].pg_content );
@@ -247,8 +242,7 @@ $.getJSON( dataURL, { pg_var: 'sch_of_biz' }, function( data ) {
 });
 
 //Engineering Page Function
-dataURL = 'http://www.southasia-uni.org/includes/mobileappcontent/get_page.php';
-$.getJSON( dataURL, { pg_var: 'sch_of_engr' }, function( data ) {
+$.getJSON( 'http://www.southasia-uni.org/includes/mobileappcontent/get_page.php', { pg_var: 'sch_of_engr' }, function( data ) {
 	$("#engineering_scl_page .content .pg_title").text( data[0].pg_header );
 	$("#engineering_scl_page .content .pg_img").attr( 'src', 'http://www.southasia-uni.org/files/photos/' + $.trim( data[0].pg_img ) + '.hdq.JPG' );
 	$("#engineering_scl_page .content .pg_content").html( data[0].pg_content );
@@ -256,8 +250,7 @@ $.getJSON( dataURL, { pg_var: 'sch_of_engr' }, function( data ) {
 });
 
 //Humanities Page Function
-dataURL = 'http://www.southasia-uni.org/includes/mobileappcontent/get_page.php';
-$.getJSON( dataURL, { pg_var: 'sch_of_hum' }, function( data ) {
+$.getJSON( 'http://www.southasia-uni.org/includes/mobileappcontent/get_page.php', { pg_var: 'sch_of_hum' }, function( data ) {
 	$("#humanities_scl_page .content .pg_title").text( data[0].pg_header );
 	$("#humanities_scl_page .content .pg_img").attr( 'src', 'http://www.southasia-uni.org/files/photos/' + $.trim( data[0].pg_img ) + '.hdq.jpg' );
 	$("#humanities_scl_page .content .pg_content").html( data[0].pg_content );
@@ -265,8 +258,7 @@ $.getJSON( dataURL, { pg_var: 'sch_of_hum' }, function( data ) {
 });
 
 //Public Science Page Function
-dataURL = 'http://www.southasia-uni.org/includes/mobileappcontent/get_page.php';
-$.getJSON( dataURL, { pg_var: 'sch_of_ph_ls' }, function( data ) {
+$.getJSON( 'http://www.southasia-uni.org/includes/mobileappcontent/get_page.php', { pg_var: 'sch_of_ph_ls' }, function( data ) {
 	$("#pblic_scl_page .content .pg_title").text( data[0].pg_header );
 	$("#pblic_scl_page .content .pg_img").attr( 'src', 'http://www.southasia-uni.org/files/photos/' + $.trim( data[0].pg_img ) + '.hdq.jpg' );
 	$("#pblic_scl_page .content .pg_content").html( data[0].pg_content );
@@ -301,22 +293,21 @@ $("#msgPage ul li a").on( 'click', function(){
 	$("#msgContent .loading").show();
 	$("#msgContent .content").hide();
 	var pg_var_profile = $(this).attr('data-pg-var');
-	var pg_var_msg = $(this).attr('id');
-	var dataURL = 'http://www.southasia-uni.org/includes/mobileappcontent/get_page.php';
+	var pg_var_msg = $(this).attr('id');	
 
-	$.getJSON( dataURL, { pg_var: pg_var_msg }, function( data ) {
+	$.getJSON( 'http://www.southasia-uni.org/includes/mobileappcontent/get_page.php', { pg_var: pg_var_msg }, function( data ) {
 		$("#msgContent .content .message .title").text( data[0].pg_header );
 		$("#msgContent .content .message .pg_content").html( data[0].pg_content );
 		$("#msgContent .content .message .pg_content").html( $("#msgContent .content .message .pg_content").text() );	
 	})
 	.done( function(){
-		$.getJSON( dataURL, { pg_var: pg_var_profile }, function( data ) {
+		$.getJSON( 'http://www.southasia-uni.org/includes/mobileappcontent/get_page.php', { pg_var: pg_var_profile }, function( data ) {
 			/*$("#msgContent .content .profile .title").text( data[0].pg_header );*/
-			if( data[0].pg_var == "vc_pfile" ){
+			/*if( data[0].pg_var == "vc_pfile" ){
 				$("#msgContent .content .profile .title").text( "Profile of VC" );
 			} else if( data[0].pg_var == "provc_pfile" ){
 				$("#msgContent .content .profile .title").text( "Profile of Pro-VC" );
-			}
+			}*/
 			$("#msgContent .content .profile .pg_img").attr( 'src', 'http://www.southasia-uni.org/files/photos/' + $.trim( data[0].pg_img ) + '.hdq.jpg' );
 			$("#msgContent .content .profile .pg_content").html( data[0].pg_content );
 			$("#msgContent .content .profile .pg_content").html( $("#msgContent .content .profile .pg_content").text() );	

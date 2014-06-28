@@ -209,35 +209,6 @@ body, .ui-content, .ui-page{
 	font-style: italic;
 	color: #8b8b8b;
 }
-#homePage .ext_links{
-	overflow: hidden;
-	clear: both;
-	margin-bottom: 30px;
-}
-#homePage .ext_links ul{
-	float: right;
-}
-#homePage .ext_links ul li{
-	display: inline-block;
-	margin-left: 10px;	
-}
-#homePage .ext_links ul li img{
-	height: 53px;
-}
-#homePage .ext_links ul li a{
-	display: block;
-	height: 53px;
-	width: 50px;
-}
-#homePage .ext_links ul li.facebook a{
-	background: url('./img/social-icons.png') no-repeat top left;
-}
-#homePage .ext_links ul li.youtube a{
-	background: url('./img/social-icons.png') no-repeat 0 -171px;
-}
-#homePage .ext_links ul li.vimeo a{
-	background: url('./img/social-icons.png') no-repeat 0 -114px;
-}
 #photo_page .image_gallery{
 	width: 100%;
 }
@@ -278,6 +249,10 @@ body, .ui-content, .ui-page{
 	height: 55px;
 	text-indent: -9999px;
 	background: url('./img/social-icons.png') no-repeat top left;
+}
+#mypanel .social-links a.logo{
+	background: url( './img/logo.png' ) no-repeat -2px 2px #efefef;
+	background-size: 50px;
 }
 #mypanel .social-links a.vm{ background-position: 0 -114px; } 
 #mypanel .social-links a.yt{ background-position: 0 -171px; }
@@ -411,11 +386,13 @@ body, .ui-content, .ui-page{
 }
 
 #dept_page ul li {
-	margin: 10px;
-	padding-bottom: 10px;
 	border-bottom: 1px solid #cdcdcd;
 }
 #dept_page ul li:last-child{
 	border: none;
 	padding-bottom: 0;
+}
+#dept_page ul li a{
+	display: block;
+	padding: 10px;
 }

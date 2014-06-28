@@ -1,5 +1,5 @@
 // Pannel script 
-var panel = '<div data-role="panel" id="mypanel" data-display="reveal" style="background:#BC242A;" data-position-fixed="true">' + '<ul class="panel_nav"><li><a href="#homePage">Home</a></li><li><a href="#msgPage">Message</a></li><li><a href="#admissionPage">Admissions</a></li><li><a href="#dept_page">Departments</a></li><li><a href="#business_scl_page">Business School</a></li><li><a href="#engineering_scl_page">School of Engineering</a></li><li><a href="#humanities_scl_page">School of Humanities</a></li><li><a href="#pblic_scl_page">School Public Health and Life Science</a></li><li><a href="#news_events_page">News, Events &amp; Notice</a></li><li><a href="#photo_page">Photo Gallery</a></li><li><a href="#map_page">Map</a></li><li><a href="#contact_page">Contact Us</a></li></ul><div class="social-links"><a class="fb" href="https://www.facebook.com/pages/University-of-South-Asia/384978734950628">Facebook</a><a class="yt" href="https://www.youtube.com/channel/UCxezjINjUWgwQ62NZbomRpw">Youtube</a><a class="vm" href="https://vimeo.com/user19719682">Vimeo</a></div></div>';
+var panel = '<div data-role="panel" id="mypanel" data-display="reveal" style="background:#BC242A;" data-position-fixed="true">' + '<ul class="panel_nav"><li><a href="#homePage">Home</a></li><li><a href="#msgPage">Message</a></li><li><a href="#admissionPage">Admissions</a></li><li><a href="#dept_page">Departments</a></li><li><a href="#business_scl_page">Business School</a></li><li><a href="#engineering_scl_page">School of Engineering</a></li><li><a href="#humanities_scl_page">School of Humanities</a></li><li><a href="#pblic_scl_page">School Public Health and Life Science</a></li><li><a href="#news_events_page">News, Events &amp; Notice</a></li><li><a href="#photo_page">Photo Gallery</a></li><li><a href="#map_page">Map</a></li><li><a href="#contact_page">Contact Us</a></li></ul><div class="social-links"><a class="logo" href="http://www.southasia-uni.org/"></a><a class="fb" href="https://www.facebook.com/pages/University-of-South-Asia/384978734950628">Facebook</a><a class="yt" href="https://www.youtube.com/channel/UCxezjINjUWgwQ62NZbomRpw">Youtube</a><a class="vm" href="https://vimeo.com/user19719682">Vimeo</a></div></div>';
 $(document).one('pagebeforecreate', function () {
     $.mobile.pageContainer.prepend( panel );
     $("#mypanel").panel();
@@ -267,7 +267,30 @@ $.getJSON( 'http://www.southasia-uni.org/includes/mobileappcontent/get_page.php'
 
 $.getJSON ( 'http://www.southasia-uni.org/includes/mobileappcontent/department_page.php', function( data ) {
 	
-	$.each( data.departments[0].business, function( index, val){
+	$.each( data, function(index, val) {
+		if( data[index].dept == "School of Business" ){
+			$('#dept_page .content .bus_cont ul').append(
+				"<li><a href='" + data[index].url + "'>" + data[index].prog + "</a></li>"
+			)
+		}
+		if( data[index].dept == "School of Engineering" ){
+			$('#dept_page .content .eng_cont ul').append(
+				"<li><a href='" + data[index].url + "'>" + data[index].prog + "</a></li>"
+			)
+		}
+		if( data[index].dept == "School of Public Health & Life Science" ){
+			$('#dept_page .content .bublic_cont ul').append(
+				"<li><a href='" + data[index].url + "'>" + data[index].prog + "</a></li>"
+			)
+		}
+		if( data[index].dept == "School of Humanities" ){
+			$('#dept_page .content .hum_cont ul').append(
+				"<li><a href='" + data[index].url + "'>" + data[index].prog + "</a></li>"
+			)
+		}
+		
+	});
+	/*$.each( data.departments[0].business, function( index, val){
 		$('#dept_page .content .bus_cont ul').append(
 			"<li>" + val.business + "</li>"
 		)
@@ -286,7 +309,7 @@ $.getJSON ( 'http://www.southasia-uni.org/includes/mobileappcontent/department_p
 		$('#dept_page .content .bublic_cont ul').append(
 			"<li>" + val.public_health + "</li>"
 		)		
-	})
+	})*/
 });
 // Message page function
 $("#msgPage ul li a").on( 'click', function(){

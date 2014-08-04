@@ -1,3 +1,7 @@
+
+jQuery.support.cors = true;
+$.mobile.allowCrossDomainPages = true;
+
 // Pannel script 
 var panel = '<div data-role="panel" id="mypanel" data-display="reveal" style="background:#BC242A;" data-position-fixed="true">' + '<ul class="panel_nav"><li><a href="#homePage">Home</a></li><li><a href="#msgPage">Message</a></li><li><a href="#admissionPage">Admissions</a></li><li><a href="#dept_page">Departments</a></li><li><a href="#business_scl_page">Business School</a></li><li><a href="#engineering_scl_page">School of Engineering</a></li><li><a href="#humanities_scl_page">School of Humanities</a></li><li><a href="#pblic_scl_page">School Public Health and Life Science</a></li><li><a href="#news_events_page">News, Events &amp; Notice</a></li><li><a href="#photo_page">Photo Gallery</a></li><li><a href="#map_page">Map</a></li><li><a href="#contact_page">Contact Us</a></li></ul><div class="social-links"><a class="logo" href="http://www.southasia-uni.org/"></a><a class="fb" href="https://www.facebook.com/pages/University-of-South-Asia/384978734950628">Facebook</a><a class="yt" href="https://www.youtube.com/channel/UCxezjINjUWgwQ62NZbomRpw">Youtube</a><a class="vm" href="https://vimeo.com/user19719682">Vimeo</a></div></div>';
 $(document).one('pagebeforecreate', function () {
